@@ -3,15 +3,14 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   username = config.modules.system.username;
   cfg = config.modules.theming.themes.catppuccin;
+  inherit (lib) mkIf mkDefault;
 
   hyprland-catppuccin = pkgs.stdenv.mkDerivation {
     name = "hyprland-catppuccin";
     version = "b57375545f5da1f7790341905d1049b1873a8bb3v";
-    runtimeInputs = with pkgs; [];
     src = pkgs.fetchFromGitHub {
       owner = "catppuccin";
       repo = "hyprland";
@@ -75,7 +74,14 @@ in {
     # hyprland settings
     home-manager.users.${username} = {
       xdg.configFile."hypr/hyprlock.conf".source = "${hyprlock-catppuccin}/.config/hypr/hyprlock.conf";
-      xdg.desktopEntries.hyprlock.icon = "${catppuccin-icon}";
+      # We unfortunatly need to always create the icon because
+      # we can not conditionally set the name as it is dependent
+      # on the resulting config attributeset, which is again dependent
+      # on us setting the attribute or not. (-> infinite recursion)
+      xdg.desktopEntries.hyprlock = {
+        name = mkDefault "Hyprlock";
+        icon = "${catppuccin-icon}";
+      };
       # xdg.configFile."background".source = "${pkgs.catppuccin-wallpapers}/mandelbrot/mandelbrot_gap_pink.png";
       # xdg.configFile."hypr/${flavor}.conf".source = "${hyprlock-catppuccin}/.config/hypr/${flavor}.conf";
     };
