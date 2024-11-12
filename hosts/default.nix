@@ -25,8 +25,7 @@ in {
       ];
   };
   schnee = lib.nixosSystem {
-    inherit system;
-    specialArgs = {inherit lib inputs self;};
+    inherit system specialArgs;
     modules =
       baseModules ++ [./schnee];
   };
