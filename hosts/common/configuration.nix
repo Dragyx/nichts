@@ -14,6 +14,9 @@ in {
     package = pkgs.plocate;
     localuser = null;
   };
+  security.sudo.package = pkgs.sudo.override {withInsults = true;};
+
+  nixpkgs.config.allowUnfree = true;
 
   #TODO: MOVE this somewhere else
   users.users.${username}.uid = 1000;
@@ -32,7 +35,10 @@ in {
       fish.enable = lib.mkDefault true;
       atuin.enable = lib.mkDefault true;
       zellij.enable = lib.mkDefault true;
-      editors.helix.enable = lib.mkDefault true;
+      editors.helix = {
+        enable = lib.mkDefault true;
+        default = lib.mkDefault true;
+      };
 
       firefox.extensions = {
         "bitwarden-password-manager" = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
