@@ -1,0 +1,2 @@
+e asm.syntax=att
+e stack.size=256
