@@ -20,7 +20,10 @@ in {
 
   #TODO: MOVE this somewhere else
   users.users.${username}.uid = 1000;
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [zlib];
+  };
 
   modules = {
     system = {
@@ -32,6 +35,7 @@ in {
       foot.enable = lib.mkDefault true;
       foot.server = lib.mkDefault true;
       nh.enable = lib.mkDefault true;
+      radare2.enable = lib.mkDefault true;
       fish.enable = lib.mkDefault true;
       atuin.enable = lib.mkDefault true;
       zellij.enable = lib.mkDefault true;

@@ -8,8 +8,6 @@
     ../common/default.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  security.sudo.package = pkgs.sudo.override {withInsults = true;};
   services.logrotate.checkConfig = false;
 
   networking.hostName = "iso"; # Define your hostname.
@@ -24,10 +22,6 @@
   # be nice to your ssds
   services.fstrim.enable = true;
   security.polkit.enable = true;
-
-  # to not create conflicts with the existing installation
-  # disko.devices.disk.main.content.partitions.root.content.name = "cryptrootISO";
-  # disko.devices.disk.main.content.partitions.root.content.name = "cryptrootISO";
 
   modules = {
     login = {
