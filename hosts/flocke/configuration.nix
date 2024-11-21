@@ -11,10 +11,6 @@
   # framework specific for BIOS updates
   services.fwupd.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
-  security.sudo.package = pkgs.sudo.override {withInsults = true;};
-
   services.logrotate.checkConfig = false;
 
   networking.hostId = "adf23c31";

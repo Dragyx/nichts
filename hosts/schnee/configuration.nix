@@ -2,7 +2,6 @@
   networking.hostId = "aefab460";
   networking.interfaces.enp7s0.useDHCP = true;
   systemd.services.zfs-mount.enable = true;
-  nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true;
   environment.systemPackages = with pkgs; [networkmanager]; # cli tool for managing connections
 
@@ -28,14 +27,7 @@
       };
     };
   };
-
-  # virtualisation.virtualbox.host.enable = true;
-  # programs.hyprland.xwayland.enable = true;
-  # Enable Desktop Environment
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
   security.polkit.enable = true;
-  # services.xserver.displayManager.sessionPackages = [ pkgs.hyprland pkgs.sway ];
 
   #TODO: Add to  modules.system.monitors as option
   home-manager.users."dragyx".wayland.windowManager.hyprland.settings = {

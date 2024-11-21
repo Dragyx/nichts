@@ -61,9 +61,9 @@ in {
             cl = "clear";
             cp = "cp -ivr";
             mv = "mv -iv";
-            ls = "eza --icons";
-            la = "eza --icons -a";
-            ll = "eza --icons -lha";
+            ls = "eza --icons auto";
+            la = "eza --icons auto -a";
+            ll = "eza --icons auto -lha";
             zj = "zellij";
             lg = "lazygit";
             ns = "nix repl --expr 'import <nixpkgs>{}'";
