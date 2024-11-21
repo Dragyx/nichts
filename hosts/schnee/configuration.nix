@@ -53,7 +53,7 @@
       session = "Hyprland";
     };
     system = rec {
-      hostname = "schnee";
+      network.hostname = "schnee";
       username = "dragyx";
       gitPath = "/home/${username}/repos/nichts";
       nvidia.enable = true;

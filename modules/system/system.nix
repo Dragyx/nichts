@@ -16,6 +16,11 @@ in {
       description = "path to the flake directory";
       type = types.str;
     };
+
+    cpu = mkOption {
+      description = "Which manufacturer the cpu is from";
+      type = types.enum ["amd" "intel"];
+    };
   };
 
   config = {
@@ -23,5 +28,7 @@ in {
       isNormalUser = true;
       extraGroups = ["wheel" "adbusers"];
     };
+    # is already done by hardware-configuration.nix
+    # hardware.cpu.${cpu}.updateMicrocode = true;
   };
 }
