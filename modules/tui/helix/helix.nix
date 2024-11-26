@@ -19,9 +19,10 @@ in {
     };
   };
 
-  config = mkIf cfg.enable
+  config =
+    mkIf cfg.enable
     {
-    environment.variables.EDITOR = mkIf cfg.default "hx"; # getExe config.home-manager.users.${username}.programs.helix.package;
+      environment.variables.EDITOR = mkIf cfg.default "hx"; # getExe config.home-manager.users.${username}.programs.helix.package;
       home-manager.users.${username} = {
         programs.helix = {
           enable = true;
@@ -61,6 +62,5 @@ in {
           };
         };
       };
-    }
-  ;
+    };
 }
