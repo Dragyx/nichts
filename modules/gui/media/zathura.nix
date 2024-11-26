@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
@@ -14,9 +13,6 @@ in {
     home-manager.users.${username} = {
       programs.zathura = {
         enable = true;
-        extraConfig = ''
-          include catppuccin-latte
-        '';
         options = {
           selection-clipboard = "clipboard";
         };

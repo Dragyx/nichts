@@ -28,6 +28,7 @@ in {
     */
 
     ./hyprland.nix
+    ./zathura.nix
   ];
 
   config = mkIf cfg.enable {
