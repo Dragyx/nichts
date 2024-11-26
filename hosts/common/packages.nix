@@ -15,7 +15,7 @@ in {
     vim
     bat
     # nheko
-    calibre
+    # calibre
     element-desktop
     neovim
     typst
@@ -78,5 +78,7 @@ in {
     alejandra
 
     radare2
+    # cli markdown viewer
+    glow
   ];
 }
