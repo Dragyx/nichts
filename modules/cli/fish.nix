@@ -33,6 +33,7 @@ in {
     environment = {
       shells = [pkgs.fish];
       pathsToLink = ["/share/fish"];
+      systemPackages = with pkgs; [eza bat nh zellij lazygit];
     };
 
     home-manager.users.${username} = {
@@ -67,7 +68,7 @@ in {
             zj = "zellij";
             lg = "lazygit";
             ns = "nix repl --expr 'import <nixpkgs>{}'";
-            nv = "nvim";
+            man = "man -P bat";
             gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
             agpl = "curl https://www.gnu.org/licenses/agpl-3.0.txt -o LICENSE";
             flake = "cd \"${gitPath}\"";
