@@ -30,13 +30,6 @@ in {
             id = 0;
             isDefault = true;
             search.default = "DuckDuckGo";
-            userChrome = ''
-              @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
-
-              #TabsToolbar {visibility: collapse; !important; }
-              /* #navigator-toolbox {visibility: collapse;} */
-              browser {margin-right: -14px; margin-bottom: -14px; !important; }
-            '';
             search.force = true;
             settings = {
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
