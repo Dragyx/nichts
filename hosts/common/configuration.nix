@@ -52,7 +52,7 @@ in {
         "privacy-badger17" = "jid1-MnnxcxisBPnSXQ@jetpack";
         "terms-of-service-didnt-read" = "jid0-3GUEt1r69sQNSrca5p8kx9Ezc3U@jetpack";
         "multi-account-containers" = "@testpilot-containers";
-        "refined-github-" = "1765a9e7-77f8-4167-bf5b-939736b23862";
+        "ublock-origin" = "uBlock0@raymondhill.net";
       };
     };
     theming.theme = "catppuccin";
