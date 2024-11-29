@@ -65,6 +65,7 @@ in {
             ls = "eza --icons auto";
             la = "eza --icons auto -a";
             ll = "eza --icons auto -lha";
+            lt = "eza --icons auto -T";
             zj = "zellij";
             lg = "lazygit";
             ns = "nix repl --expr 'import <nixpkgs>{}'";
