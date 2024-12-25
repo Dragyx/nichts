@@ -10,9 +10,8 @@ in {
   options.modules.system.fonts.enable = mkEnableOption "fonts";
   config.fonts.packages = mkIf cfg.enable (with pkgs; [
     material-design-icons
-    (nerdfonts.override {
-      fonts = ["JetBrainsMono" "Iosevka"];
-    })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
     iosevka
     noto-fonts
     noto-fonts-cjk-sans
