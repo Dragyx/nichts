@@ -12,6 +12,6 @@ in {
   # if disabled
   config = mkIf cfg.enable {
     # disable catppuccin for zathura, as books, documents should not be themed
-    home-manager.users.${username}.programs.zathura.catppuccin.enable = false;
+    home-manager.users.${username}.catppuccin.zathura.enable = false;
   };
 }
