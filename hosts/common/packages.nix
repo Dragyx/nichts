@@ -72,8 +72,6 @@ in {
 
     # partition management
     parted
-    gnufdisk
-
     # nix formatter
     alejandra
 
