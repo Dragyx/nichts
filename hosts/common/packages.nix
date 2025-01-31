@@ -12,6 +12,7 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     (python3.withPackages python-packages)
+    qmk
     vim
     bat
     # nheko
@@ -72,7 +73,6 @@ in {
 
     # partition management
     parted
-    gnufdisk
 
     # nix formatter
     alejandra
@@ -80,5 +80,11 @@ in {
     radare2
     # cli markdown viewer
     glow
+
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
+    hunspellDicts.de_AT
+    cbonsai
   ];
 }
