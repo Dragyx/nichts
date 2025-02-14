@@ -148,7 +148,6 @@ in {
             "SUPER, RETURN, exec, footclient"
             "SUPER SHIFT, RETURN, exec, rofi -show drun -show-icons"
             "SUPER SHIFT, Q, killactive,"
-            "SUPER, M, exit, "
             "SUPER, B, exec, footclient --title=bluetuith ${pkgs.bluetuith}/bin/bluetuith"
             "SUPER, N, exec, footclient --title=nmtui ${pkgs.networkmanager}/bin/nmtui"
             "SUPER, A, exec, ${pkgs.ani-cli-advanced}/bin/ani-cli-advanced"
