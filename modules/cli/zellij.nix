@@ -32,7 +32,7 @@ in {
         };
       };
       # TODO: move this somewhere else
-      # programs.foot.settings.main.shell = "${pkgs.zellij}/bin/zellij";
+      programs.foot.settings.main.shell = "${pkgs.zellij}/bin/zellij";
     };
   };
 }
