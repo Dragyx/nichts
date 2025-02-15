@@ -6,7 +6,7 @@
 }: let
   username = config.modules.system.username;
   cfg = config.modules.theming.themes.catppuccin;
-  inherit (lib) mkIf mkDefault;
+  inherit (lib) mkIf mkDefault getExe;
 
   hyprland-catppuccin = pkgs.stdenv.mkDerivation {
     name = "hyprland-catppuccin";
@@ -78,9 +78,15 @@ in {
       # we can not conditionally set the name as it is dependent
       # on the resulting config attributeset, which is again dependent
       # on us setting the attribute or not. (-> infinite recursion)
+      #
+      # Just, to be safe, we set the hyprlock executable,
+      # since this would otherwise cause the rebuild to fail
+      # when catppuccin is not enabled as the `hyprlock` attributeset would
+      # be created without the exec attribute being set :(
       xdg.desktopEntries.hyprlock = {
         name = mkDefault "Hyprlock";
         icon = "${catppuccin-icon}";
+        exec = "${getExe pkgs.hyprlock}";
       };
       # xdg.configFile."background".source = "${pkgs.catppuccin-wallpapers}/mandelbrot/mandelbrot_gap_pink.png";
       # xdg.configFile."hypr/${flavor}.conf".source = "${hyprlock-catppuccin}/.config/hypr/${flavor}.conf";
