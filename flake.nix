@@ -18,11 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     catppuccin.url = "github:catppuccin/nix";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -36,5 +31,8 @@
       url = "github:Dragyx/satpaper";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
   };
 }

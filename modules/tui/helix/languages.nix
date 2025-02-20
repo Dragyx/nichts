@@ -17,6 +17,7 @@ in {
       bash-language-server # Bash lsp
       shellcheck
       marksman # markdown
+      haskell-language-server
     ];
     home-manager.users.${username} = {
       programs.helix.languages = {

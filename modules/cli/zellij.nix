@@ -6,9 +6,10 @@
 }: let
   cfg = config.modules.programs.zellij;
   inherit (config.modules.system) username;
+  inherit (lib) mkIf mkEnableOption getExe;
 in {
-  options.modules.programs.zellij.enable = lib.mkEnableOption "zellij";
-  config = lib.mkIf cfg.enable {
+  options.modules.programs.zellij.enable = mkEnableOption "zellij";
+  config = mkIf cfg.enable {
     home-manager.users.${username} = {
       programs.zellij = {
         enable = true;
@@ -32,7 +33,7 @@ in {
         };
       };
       # TODO: move this somewhere else
-      programs.foot.settings.main.shell = "${pkgs.zellij}/bin/zellij";
+      programs.foot.settings.main.shell = "${getExe pkgs.zellij}";
     };
   };
 }

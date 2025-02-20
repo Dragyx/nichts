@@ -13,6 +13,7 @@ in {
   environment.systemPackages = with pkgs; [
     (python3.withPackages python-packages)
     anki
+    ghc
     qmk
     vim
     bat

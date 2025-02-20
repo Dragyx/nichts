@@ -26,7 +26,7 @@ in {
       home-manager.users.${username} = {
         programs.helix = {
           enable = true;
-          package = inputs.helix.packages.${pkgs.system}.default;
+          package = pkgs.helix; #inputs.helix.packages.${pkgs.system}.default;
 
           settings = {
             editor = {
