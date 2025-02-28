@@ -36,9 +36,7 @@ in {
     ];
 
     programs.xwayland.enable = true;
-    programs.hyprland = {
-      enable = true;
-    };
+    programs.hyprland.enable = true;
 
     services.gnome.gnome-keyring.enable = cfg.gnome-keyring.enable;
     security.pam.services.login.enableGnomeKeyring = cfg.gnome-keyring.enable;
@@ -137,7 +135,7 @@ in {
           };
           gestures.workspace_swipe = true;
           debug.enable_stdout_logs = true;
-          debug.disable_logs = false; # FIXME: RESET TO TRUE
+          debug.disable_logs = true;
           windowrulev2 = [
             "float,title:bluetuith"
             "float,title:nmtui"
@@ -157,8 +155,7 @@ in {
             "SUPER, V, togglefloating, "
             "SUPER, P, pseudo, # dwindle"
             "SUPER, S, togglesplit, # dwindle"
-            ",PRINT, exec, mkdir -p ~/Pictures/Screenshots && ${getExe pkgs.grimblast} copysave area ~/Pictures/Screenshots/screenshot-annotated-$(date -Iminutes).png"
-            "SHIFT,PRINT, exec, mkdir -p ~/Pictures/Screenshots && ${getExe pkgs.grimblast} copysave area - | ${getExe pkgs.satty} -f -o ~/Pictures/Screenshots/screenshot-annotated-$(date -Iminutes).png - "
+            ",PRINT, exec, ${getExe pkgs.satty} -f \"$(${getExe pkgs.grimblast} copysave area $(mktemp --suffix .png))\" -o ~/Pictures/Screenshots/screenshot-annotated-$(date -Iminutes).png"
 
             # Move focus with mainMod + arrow keys"
             "SUPER, h, movefocus, l"
@@ -228,6 +225,9 @@ in {
             # Example volume button that will activate even while an input inhibitor is active"
             ",XF86AudioLowerVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
             ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ];
+          env = [
+            "XCURSOR_SIZE,24"
           ];
         };
       };
