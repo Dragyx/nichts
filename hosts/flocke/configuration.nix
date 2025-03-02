@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../common/default.nix
     ./packages.nix
@@ -117,7 +113,7 @@
     programs = {
       minecraft.enable = false;
       minecraft.wayland = true;
-      vesktop.enable = true;
+      vesktop.enable = false;
       btop.enable = true;
       mpv.enable = true;
       firefox.enable = true;
@@ -142,7 +138,7 @@
     };
     services = {
       pipewire.enable = true;
-      satpaper.enable = true;
+      satpaper.enable = false;
     };
 
     WM = {
@@ -151,6 +147,7 @@
         enable = true;
         gnome-keyring.enable = true;
       };
+      cosmic.enable = false;
     };
   };
 

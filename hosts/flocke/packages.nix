@@ -26,6 +26,7 @@
     # Animeeeeee!
     ani-cli # The stable version is very outdated
     superTuxKart
-    nnn
+    # nnn
+    anki
   ];
 }
