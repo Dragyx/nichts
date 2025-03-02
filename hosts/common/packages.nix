@@ -21,7 +21,7 @@ in {
     bat
     # nheko
     # calibre
-    element-desktop
+    small.element-desktop
     neovim
     typst
     prismlauncher
