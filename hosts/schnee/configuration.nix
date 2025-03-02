@@ -39,6 +39,11 @@
     ];
   };
 
+  # services.ollama = {
+  #   enable = true;
+  #   acceleration = "cuda";
+  # };
+
   modules = {
     login = {
       greetd.enable = true;
@@ -115,7 +120,7 @@
       steam.enable = true;
       steam.gamescope = true;
       firefox.enable = true;
-      vesktop.enable = true;
+      vesktop.enable = false;
       btop.enable = true;
       mpv.enable = true;
       schizofox.enable = false;
@@ -126,8 +131,6 @@
       i3.enable = false;
       git = {
         enable = true;
-        userName = "Dragyx";
-        userEmail = "66752602+Dragyx@users.noreply.github.com";
         defaultBranch = "main";
       };
       starship.enable = true;

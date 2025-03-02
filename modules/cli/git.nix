@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
@@ -10,18 +9,6 @@ with lib; let
 in {
   options.modules.programs.git = {
     enable = mkEnableOption "git";
-    userName = mkOption {
-      type = types.str;
-      description = "git username";
-    };
-    userEmail = mkOption {
-      type = types.str;
-      description = "git email";
-    };
-    #        signingKey = mkOption {
-    #           type = types.str;
-    #          description = "git commit signing key";
-    #     };
     editor = mkOption {
       type = types.str;
       default = "$EDITOR";
@@ -42,7 +29,7 @@ in {
   config = mkIf cfg.enable {
     home-manager.users.${username} = {
       programs.git = {
-        inherit (cfg) enable userName userEmail;
+        inherit (cfg) enable;
         extraConfig = {
           /*
              currently broken (rust compile error)

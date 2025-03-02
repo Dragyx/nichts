@@ -128,8 +128,6 @@
       # neovim.enable = true;
       git = {
         enable = true;
-        userName = "Dragyx";
-        userEmail = "66752602+Dragyx@users.noreply.github.com";
         defaultBranch = "main";
       };
       starship.enable = true;
