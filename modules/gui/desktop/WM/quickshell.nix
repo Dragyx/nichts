@@ -1,24 +1,30 @@
 {
   config,
-  lib,
-  system,
   inputs,
+  lib,
+  pkgs,
   ...
 }: let
   cfg = config.modules.WM.quickshell;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf mkMerge;
+  inherit (pkgs) system;
 in {
   options.modules.WM.quickshell = {
     enable = mkEnableOption "quickshell";
     bar.enable = mkEnableOption "bar";
   };
 
-  config =
-    mkIf cfg.enable {
-      environment.systemPackages = [
-        inputs.quickshell.packages.${system}.default
-      ];
-    }
-    // mkIf (cfg.bar.enable && cfg.bar.enable) {
-    };
+  config = mkMerge [
+    (mkIf
+      cfg.enable
+      {
+        environment.systemPackages = [
+          inputs.quickshell.packages.${system}.default
+        ];
+      })
+    (mkIf
+      (cfg.enable && cfg.bar.enable)
+      {
+      })
+  ];
 }
