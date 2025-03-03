@@ -145,6 +145,10 @@
         enable = true;
         gnome-keyring.enable = true;
       };
+      quickshell = {
+        enable = true;
+        bar.enable = true;
+      };
       cosmic.enable = false;
     };
   };

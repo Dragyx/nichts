@@ -3,5 +3,6 @@ _: {
     ./cosmic.nix
     ./hyprland.nix
     ./i3
+    ./quickshell.nix
   ];
 }

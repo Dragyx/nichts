@@ -42,7 +42,6 @@ My personal collection of NixOS configuration files
 │   │   ├── neovim.nix
 │   │   ├── nh.nix
 │   │   ├── ranger.nix
-│   │   ├── scripts
 │   │   ├── starship.nix
 │   │   ├── zellij.nix
 │   │   └── zsh.nix
@@ -63,12 +62,14 @@ My personal collection of NixOS configuration files
 │   │   │   ├── rofi.nix
 │   │   │   ├── waybar.nix
 │   │   │   └── WM
+│   │   │       ├── cosmic.nix
 │   │   │       ├── default.nix
 │   │   │       ├── hyprland.nix
-│   │   │       └── i3
-│   │   │           ├── default.nix
-│   │   │           ├── i3-new.nix
-│   │   │           └── polybar.sh
+│   │   │       ├── i3
+│   │   │       │   ├── default.nix
+│   │   │       │   ├── i3-new.nix
+│   │   │       │   └── polybar.sh
+│   │   │       └── quickshell.nix
 │   │   ├── dev
 │   │   │   ├── default.nix
 │   │   │   └── vivado.nix
@@ -122,7 +123,8 @@ My personal collection of NixOS configuration files
 │   │   │   ├── hyprland.nix
 │   │   │   ├── test_waybar_with_theme.sh
 │   │   │   ├── waybar.css
-│   │   │   └── waybar.nix
+│   │   │   ├── waybar.nix
+│   │   │   └── zathura.nix
 │   │   ├── default.nix
 │   │   └── options.nix
 │   └── tui
@@ -134,6 +136,10 @@ My personal collection of NixOS configuration files
 │       │   └── languages.nix
 │       ├── neovim.nix
 │       ├── newsboat.nix
+│       ├── radare2
+│       │   ├── default.nix
+│       │   ├── radare2.nix
+│       │   └── radare2rc
 │       └── yazi.nix
 ├── notes.md
 ├── overlay.nix
