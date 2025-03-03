@@ -86,6 +86,11 @@ in {
             auto-format = true;
             language-servers = ["dprint" "typescript-language-server"];
           }
+          {
+            name = "qml";
+            auto-format = true;
+            language-servers = ["qmlls"];
+          }
         ];
 
         language-server = {
