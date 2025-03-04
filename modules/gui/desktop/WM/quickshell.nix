@@ -19,7 +19,12 @@ in {
       cfg.enable
       {
         environment.systemPackages = [
-          inputs.quickshell.packages.${system}.default
+          (inputs.quickshell.packages.${system}.default.override {
+            withQtSvg = true;
+            withPipewire = true;
+            withPam = true;
+            withHyprland = true;
+          })
         ];
       })
     (mkIf
