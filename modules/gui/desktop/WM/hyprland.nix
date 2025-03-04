@@ -33,6 +33,7 @@ in {
       pciutils # lspci is needed by hyprland
       grimblast
       satty
+      wayneko
     ];
 
     programs.xwayland.enable = true;
@@ -85,10 +86,11 @@ in {
               then ["${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"]
               else []
             )
-            ++ [
-              "${pkgs.swww}/bin/swww-daemon"
-              "${getExe pkgs.nextcloud-client}"
-            ];
+            ++ (with pkgs; [
+              "${swww}/bin/swww-daemon"
+              "${getExe nextcloud-client}"
+              "${getExe wayneko} --layer overlay"
+            ]);
           monitor =
             map (
               m: "${m.device},${toString m.resolution.x}x${toString m.resolution.y}@${toString m.refresh_rate},${toString m.position.x}x${toString m.position.y},${toString m.scale},transform,${toString m.transform}"
