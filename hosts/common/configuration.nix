@@ -42,6 +42,7 @@ in {
         enable = lib.mkDefault true;
         default = lib.mkDefault true;
       };
+      git.pullRebase = lib.mkDefault true; # avoid merge hell
 
       firefox.extensions = {
         "bitwarden-password-manager" = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
