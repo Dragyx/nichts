@@ -140,6 +140,10 @@
       pipewire.enable = true;
     };
     WM = {
+      quickshell = {
+        enable = true;
+        bar.enable = true;
+      };
       waybar.enable = true;
       hyprland = {
         enable = true;
