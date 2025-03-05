@@ -1,10 +1,8 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}:
-with lib; let
+}: let
   username = config.modules.system.username;
   cfg = config.modules.WM.waybar;
 in {
