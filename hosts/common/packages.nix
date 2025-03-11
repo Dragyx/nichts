@@ -12,6 +12,7 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     (python3.withPackages python-packages)
+    man-pages
     discord
     betterdiscordctl
     anki
