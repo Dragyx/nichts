@@ -46,7 +46,6 @@ in {
     feh
     gamescope
     xorg.xrandr # see configuration.nix: needed for xwayland applications to start on right monitor
-    teamspeak_client
     wine
     discord
     betterdiscordctl
