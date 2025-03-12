@@ -33,7 +33,6 @@ in {
       pciutils # lspci is needed by hyprland
       grimblast
       satty
-      wayneko
     ];
 
     programs.xwayland.enable = true;
@@ -89,7 +88,6 @@ in {
             ++ (with pkgs; [
               "${swww}/bin/swww-daemon"
               "${getExe nextcloud-client}"
-              "${getExe wayneko} --layer overlay"
             ]);
           monitor =
             map (

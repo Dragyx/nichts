@@ -90,6 +90,9 @@ in {
       };
       # xdg.configFile."background".source = "${pkgs.catppuccin-wallpapers}/mandelbrot/mandelbrot_gap_pink.png";
       # xdg.configFile."hypr/${flavor}.conf".source = "${hyprlock-catppuccin}/.config/hypr/${flavor}.conf";
+      wayland.windowManager.hyprland.settings.exec-once = [
+        "${getExe pkgs.wayneko} --layer overlay --follow-pointer false"
+      ];
     };
   };
 }
