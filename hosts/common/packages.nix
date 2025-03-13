@@ -14,6 +14,7 @@ in {
     (python3.withPackages python-packages)
     man-pages
     discord
+    pwvucontrol
     betterdiscordctl
     anki
     ghc
