@@ -16,6 +16,7 @@ in {
         # enableFishIntegration = true;
         settings = {
           #$ on_force_close = "quit";
+          show_startup_tips = false;
           pane_frames = false;
           default_layout = "compact";
           ui = {
