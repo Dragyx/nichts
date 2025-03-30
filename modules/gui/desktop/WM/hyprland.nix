@@ -155,7 +155,7 @@ in {
             "SUPER, V, togglefloating, "
             "SUPER, P, pseudo, # dwindle"
             "SUPER, S, togglesplit, # dwindle"
-            ",PRINT, exec, ${getExe pkgs.satty} -f \"$(${getExe pkgs.grimblast} copysave area $(mktemp --suffix .png))\" -o ~/Pictures/Screenshots/screenshot-annotated-$(date -Iminutes).png"
+            ",PRINT, exec, ${getExe pkgs.satty} -f \"$(${getExe pkgs.grimblast} copysave area $(mktemp --suffix .png))\" -o ~/Pictures/Screenshots/screenshot-annotated-$(date -Iseconds).png"
 
             # Move focus with mainMod + arrow keys"
             "SUPER, h, movefocus, l"
