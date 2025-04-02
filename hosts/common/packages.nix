@@ -20,6 +20,7 @@ in {
     betterdiscordctl
     television
     anki
+    imv
     ghc
     qmk
     vim
