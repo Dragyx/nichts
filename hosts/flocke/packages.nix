@@ -28,5 +28,7 @@
     superTuxKart
     # nnn
     anki
+    kdePackages.okular
+    pympress
   ];
 }
