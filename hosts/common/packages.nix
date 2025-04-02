@@ -15,6 +15,7 @@ in {
     man-pages
     discord
     pwvucontrol
+    pandoc
     betterdiscordctl
     television
     anki
