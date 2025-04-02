@@ -16,6 +16,7 @@ in {
     discord
     pwvucontrol
     betterdiscordctl
+    television
     anki
     ghc
     qmk
