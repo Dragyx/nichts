@@ -25,7 +25,8 @@
 in {
   environment.systemPackages = with pkgs; [
     ani-cli
-    # texliveFull
+    yt-dlp
+    ffmpeg
     # android-tools
     signal-desktop
     nextcloud-client
