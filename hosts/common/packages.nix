@@ -16,6 +16,7 @@ in {
     discord
     pwvucontrol
     pandoc
+    texlive.combined.scheme-small
     betterdiscordctl
     television
     anki

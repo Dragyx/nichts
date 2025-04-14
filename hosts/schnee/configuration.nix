@@ -7,6 +7,8 @@
 
   services.gnome.gnome-keyring.enable = true;
 
+  virtualisation.docker.enable = true;
+  users.users.dragyx.extraGroups = ["docker"];
   boot = {
     kernelParams = [];
     loader = {
