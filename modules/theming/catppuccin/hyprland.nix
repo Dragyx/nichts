@@ -7,6 +7,15 @@
   username = config.modules.system.username;
   cfg = config.modules.theming.themes.catppuccin;
   inherit (lib) mkIf mkDefault getExe;
+  neko-custom =
+    pkgs.wayneko.overrideAttrs
+    (final: prev: {
+      src = pkgs.fetchgit {
+        url = "https://copeberg.org/virt/wayneko";
+        rev = "9e98ab5384d2b83e747292e67edec3972ee6833c";
+        hash = "sha256-k6ijDudyuKJE4PmCsekoXbtkx7glN7zGrv5z4ZFtxhw=";
+      };
+    });
 
   hyprland-catppuccin = pkgs.stdenv.mkDerivation {
     name = "hyprland-catppuccin";
@@ -68,6 +77,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       hyprlock
+      neko-custom
     ];
 
     services.logind.lidSwitch = "suspend";
@@ -91,7 +101,7 @@ in {
       # xdg.configFile."background".source = "${pkgs.catppuccin-wallpapers}/mandelbrot/mandelbrot_gap_pink.png";
       # xdg.configFile."hypr/${flavor}.conf".source = "${hyprlock-catppuccin}/.config/hypr/${flavor}.conf";
       wayland.windowManager.hyprland.settings.exec-once = [
-        "${getExe pkgs.wayneko} --layer overlay --follow-pointer false"
+        "${getExe neko-custom} --layer overlay"
       ];
     };
   };
