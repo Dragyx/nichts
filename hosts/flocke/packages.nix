@@ -5,7 +5,6 @@
   environment.systemPackages = with pkgs; [
     amdvlk
     texlive.combined.scheme-medium
-    signal-desktop
     nextcloud-client
     # etcher
     vlc

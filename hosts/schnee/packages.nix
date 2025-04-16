@@ -27,7 +27,6 @@ in {
     ani-cli
     ffmpeg
     # android-tools
-    signal-desktop
     nextcloud-client
     (python3.withPackages python-packages)
     vlc

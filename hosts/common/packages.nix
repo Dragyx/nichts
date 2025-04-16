@@ -15,6 +15,7 @@ in {
     man-pages
     discord
     pwvucontrol
+    signal-desktop-bin
     pandoc
     texlive.combined.scheme-small
     betterdiscordctl

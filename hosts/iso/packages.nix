@@ -4,7 +4,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # security audits
-    signal-desktop
     nextcloud-client
     vlc
     thunderbird
