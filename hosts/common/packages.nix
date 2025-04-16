@@ -21,6 +21,7 @@ in {
     television
     anki
     imv
+    yt-dlp
     ghc
     qmk
     vim
