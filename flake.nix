@@ -31,11 +31,5 @@
       url = "github:Dragyx/satpaper";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
-
-    # quickshell = {
-    #   url = "github:quickshell-mirror/quickshell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 }
