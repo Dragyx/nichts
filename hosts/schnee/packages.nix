@@ -25,7 +25,6 @@
 in {
   environment.systemPackages = with pkgs; [
     ani-cli
-    yt-dlp
     ffmpeg
     # android-tools
     signal-desktop
@@ -41,9 +40,6 @@ in {
     spotify
     # minecraft
     prismlauncher
-    # window manager
-    hyprland-protocols
-    flameshot
     feh
     gamescope
     xorg.xrandr # see configuration.nix: needed for xwayland applications to start on right monitor

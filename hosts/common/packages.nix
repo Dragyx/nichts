@@ -19,56 +19,35 @@ in {
     texlive.combined.scheme-small
     betterdiscordctl
     television
-    anki
     imv
     yt-dlp
     ghc
-    qmk
     vim
     bat
-    # nheko
-    # calibre
     element-desktop
-    neovim
     typst
     prismlauncher
     cm_unicode
-    eza # exa is unmaintained
-    hwinfo
+    eza
     git
-    broot
     unzip
     calc
     rsync
     evince
     wlr-randr
-    wget
     gnumake
-    zoxide
     python3
-    sioyek
-    nodejs
     gcc
     gdb
     cargo
     rustc
     rust-analyzer
     clippy
-    lsof
-    htop
-    smartmontools
-    # networkmanager
     pkg-config
-    sof-firmware # audio
-    # easyeffects currently throws an error
     nix-index
-    # --------- optional
-    sherlock
     nautilus
-    ranger
-    nitch
+    btop
 
-    plocate
     alsa-utils
     foot
 
@@ -77,13 +56,12 @@ in {
     imagemagick
 
     telegram-desktop
-    tg
-
     calc
     tldr
 
     # partition management
     parted
+    gparted
 
     # nix formatter
     alejandra
