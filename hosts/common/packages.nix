@@ -70,6 +70,8 @@ in {
     # cli markdown viewer
     glow
 
+    dua
+
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
