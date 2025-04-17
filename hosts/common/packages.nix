@@ -32,6 +32,7 @@ in {
     eza
     git
     jujutsu
+    comma
     unzip
     calc
     rsync
