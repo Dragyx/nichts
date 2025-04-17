@@ -31,6 +31,7 @@ in {
     cm_unicode
     eza
     git
+    jujutsu
     unzip
     calc
     rsync
