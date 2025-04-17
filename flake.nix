@@ -26,10 +26,5 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    satpaper = {
-      url = "github:Dragyx/satpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 }
