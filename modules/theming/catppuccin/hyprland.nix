@@ -12,8 +12,8 @@
     (final: prev: {
       src = pkgs.fetchgit {
         url = "https://copeberg.org/virt/wayneko";
-        rev = "9e98ab5384d2b83e747292e67edec3972ee6833c";
-        hash = "sha256-k6ijDudyuKJE4PmCsekoXbtkx7glN7zGrv5z4ZFtxhw=";
+        rev = "3ed4e4e1f847213e712fe22e0278ec62c4fa2cf2";
+        hash = "sha256-NxNrcQkx82SQ5GRqcJbbgM/Qg3GY8Whu5m5wI3zQi18=";
       };
     });
 

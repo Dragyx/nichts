@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  username = config.modules.system.username;
+in {
   imports = [
     ../common/default.nix
     ./packages.nix
@@ -6,6 +12,13 @@
 
   # framework specific for BIOS updates
   services.fwupd.enable = true;
+  virtualisation.docker.enable = true;
+  users.users.${username}.extraGroups = ["docker"];
+
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
 
   services.logrotate.checkConfig = false;
 
@@ -144,6 +157,10 @@
       hyprland = {
         enable = true;
         gnome-keyring.enable = true;
+      };
+      quickshell = {
+        enable = true;
+        bar.enable = true;
       };
       cosmic.enable = false;
     };

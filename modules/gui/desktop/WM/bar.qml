@@ -19,6 +19,19 @@ ShellRoot {
     }
 
 
+    Row {
+      id: workspaces
+      anchors.centerIn: parent
+    }    
+
+    function onNewWorkspace(workspace, index) {
+      tmp = Text{
+          text: index
+      }
+      workspaces.children.append(
+      );
+    }
+
     Text {
       // give the text an ID we can refer to elsewhere in the file
       id: workspacenumber
@@ -30,6 +43,7 @@ ShellRoot {
         Hyprland.workspaces.objectInsertedPost.connect(onWorkspaceReload)
         Hyprland.workspaces.objectRemovedPost.connect(onWorkspaceReload)
         onWorkspaceReload(null, null)
+        Hyprland.workspaces.objectInsertedPost.connect(onNewWorkspace)
     }
   }
 }
