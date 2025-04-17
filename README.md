@@ -62,6 +62,7 @@ My personal collection of NixOS configuration files
 │   │   │   ├── rofi.nix
 │   │   │   ├── waybar.nix
 │   │   │   └── WM
+│   │   │       ├── bar.qml
 │   │   │       ├── cosmic.nix
 │   │   │       ├── default.nix
 │   │   │       ├── hyprland.nix
@@ -95,7 +96,6 @@ My personal collection of NixOS configuration files
 │   │   ├── default.nix
 │   │   ├── firewall.nix
 │   │   ├── pipewire.nix
-│   │   ├── satpaper.nix
 │   │   └── ssh.nix
 │   ├── system
 │   │   ├── auto-partition.nix
@@ -117,6 +117,7 @@ My personal collection of NixOS configuration files
 │   │   ├── base
 │   │   │   └── default.nix
 │   │   ├── catppuccin
+│   │   │   ├── catppuccin
 │   │   │   ├── cursor.nix
 │   │   │   ├── default.nix
 │   │   │   ├── firefox.nix

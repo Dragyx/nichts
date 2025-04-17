@@ -3,6 +3,5 @@ _: {
     ./pipewire.nix
     ./ssh.nix
     ./firewall.nix
-    ./satpaper.nix
   ];
 }

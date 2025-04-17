@@ -147,10 +147,7 @@ in {
       neovim-old.enable = true;
       # nixvim.enable = true;
     };
-    services = {
-      pipewire.enable = true;
-      satpaper.enable = false;
-    };
+    services.pipewire.enable = true;
 
     WM = {
       waybar.enable = true;
