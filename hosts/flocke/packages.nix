@@ -12,7 +12,6 @@
     material-icons
     material-design-icons
     libreoffice
-    gimp
     spotify
     feh
     # Animeeeeee!

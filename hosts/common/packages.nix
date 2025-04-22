@@ -20,6 +20,7 @@ in {
     texlive.combined.scheme-small
     betterdiscordctl
     television
+    firefox
     imv
     yt-dlp
     ghc
@@ -55,7 +56,7 @@ in {
     foot
 
     # image manipulation
-    gimp
+    gimp3
     imagemagick
 
     telegram-desktop

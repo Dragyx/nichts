@@ -10,7 +10,6 @@
     material-icons
     material-design-icons
     libreoffice
-    gimp
     spotify
     ani-cli # The stable version is very outdated
   ];
