@@ -7,7 +7,7 @@
   cfg = config.modules.WM.hyprland;
   username = config.modules.system.username;
   monitors = config.modules.system.monitors;
-  inherit (lib) mkEnableOption mkIf getExe;
+  inherit (lib) mkEnableOption mkIf getExe getExe';
 in {
   options.modules.WM.hyprland = {
     enable = mkEnableOption "hyprland";
@@ -58,7 +58,8 @@ in {
 
       services.hypridle = {
         enable = true;
-        settings.before_sleep_cmd = "${getExe pkgs.hyprlock}";
+        settings.lock_cmd = "${getExe pkgs.hyprlock}";
+        # settings.before_sleep_cmd = "${getExe pkgs.hyprlock}";
       };
 
       wayland.windowManager.hyprland = {
@@ -127,7 +128,11 @@ in {
             "float,title:bluetuith"
             "float,title:nmtui"
           ];
-          # render.explicit_sync = 0; # TODO: Remove this and fix Hyprland
+          bindr = [
+            # TODO: Make this work with the normal killall binary
+            #       for some reason it can not find waybar with the normal binary
+            "SUPER, SUPER_L, exec, ${getExe' pkgs.toybox "killall"} -SIGUSR1 waybar" # toggle waybar with SUPER
+          ];
           bind = [
             # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
             "SUPER, RETURN, exec, footclient"
