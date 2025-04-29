@@ -8,7 +8,7 @@
   cfg = config.modules.programs.fish;
   username = config.modules.system.username;
   gitPath = config.modules.system.gitPath;
-  inherit (lib) mkIf mkEnableOption mkOption types mkForce mkMerge getExe;
+  inherit (lib) mkIf mkEnableOption mkOption types mkForce mkMerge;
 in {
   options.modules.programs.fish = {
     enable = mkEnableOption "fish";
@@ -69,7 +69,6 @@ in {
             zj = "zellij";
             lg = "lazygit";
             ns = "nix repl --expr 'import <nixpkgs>{}'";
-            man = "man -P bat";
             gpl = "curl https://www.gnu.org/licenses/gpl-3.0.txt -o LICENSE";
             agpl = "curl https://www.gnu.org/licenses/agpl-3.0.txt -o LICENSE";
             flake = "cd \"${gitPath}\"";
