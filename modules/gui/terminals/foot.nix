@@ -1,13 +1,12 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
   cfg = config.modules.programs.foot;
   username = config.modules.system.username;
+  inherit (lib) mkEnableOption mkIf getExe;
 in {
   options.modules.programs.foot = {
     enable = mkEnableOption "foot";
@@ -23,7 +22,10 @@ in {
         enable = true;
         server.enable = cfg.server;
         settings = {
-          main.dpi-aware = "yes";
+          main = {
+            dpi-aware = "yes";
+            shell = "fish -C '${getExe pkgs.microfetch}'";
+          };
         };
       };
     };

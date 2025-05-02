@@ -8,12 +8,7 @@
   cfg = config.modules.programs.fish;
   username = config.modules.system.username;
   gitPath = config.modules.system.gitPath;
-  microfetch = pkgs.microfetch.overrideAttrs (final: prev: {
-    patches = [
-      ./microfetch_shrink_logo.patch
-    ];
-  });
-  inherit (lib) mkIf mkEnableOption mkOption types mkForce mkMerge getExe;
+  inherit (lib) mkIf mkEnableOption mkOption types mkForce mkMerge;
 in {
   options.modules.programs.fish = {
     enable = mkEnableOption "fish";
@@ -44,7 +39,7 @@ in {
     home-manager.users.${username} = {
       programs.fish = {
         enable = true;
-        interactiveShellInit = "${getExe microfetch}; set fish_greeting";
+        interactiveShellInit = "set fish_greeting";
         plugins = [
           {
             name = "sponge";

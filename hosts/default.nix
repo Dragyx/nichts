@@ -6,7 +6,7 @@
   baseModules = [
     inputs.home-manager.nixosModules.home-manager
     inputs.disko.nixosModules.disko
-    ../overlay.nix
+    ../overlays
     ../modules
   ];
 in {
