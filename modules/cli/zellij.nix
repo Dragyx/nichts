@@ -1,12 +1,11 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
   cfg = config.modules.programs.zellij;
   inherit (config.modules.system) username;
-  inherit (lib) mkIf mkEnableOption getExe;
+  inherit (lib) mkIf mkEnableOption;
 in {
   options.modules.programs.zellij.enable = mkEnableOption "zellij";
   config = mkIf cfg.enable {
@@ -33,8 +32,6 @@ in {
           };
         };
       };
-      # TODO: move this somewhere else
-      programs.foot.settings.main.shell = "${getExe pkgs.zellij}";
     };
   };
 }
