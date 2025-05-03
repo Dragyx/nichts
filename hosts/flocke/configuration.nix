@@ -131,21 +131,17 @@ in {
       mpv.enable = true;
       firefox.enable = true;
       obs.enable = true;
-      # vivado.enable = true;
       rofi.enable = true;
       zathura.enable = true;
       steam = {
         enable = true;
         gamescope = true;
       };
-      # neovim.enable = true;
       git = {
         enable = true;
         defaultBranch = "main";
       };
       starship.enable = true;
-      neovim-old.enable = true;
-      # nixvim.enable = true;
     };
     services.pipewire.enable = true;
 
