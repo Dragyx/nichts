@@ -1,8 +1,13 @@
 diff --git a/src/main.rs b/src/main.rs
-index 05024df..123c2c5 100644
+index 05024df..348e46b 100644
 --- a/src/main.rs
 +++ b/src/main.rs
-@@ -69,15 +69,15 @@ fn print_system_info(fields: &Fields) {
+@@ -65,19 +65,20 @@ fn print_system_info(fields: &Fields) {
+         colors,
+     } = fields;
+ 
++
+     let cyan = COLORS.cyan;
      let blue = COLORS.blue;
      let reset = COLORS.reset;
      let system_info = format!("
@@ -15,15 +20,37 @@ index 05024df..123c2c5 100644
 -    {blue}  ▝█▛  {cyan}██▖{blue}▗▄▄▄▄▄▄▄▄▄▄▄       {cyan}  {blue}Memory{reset}        {memory_usage}
 -    {blue}   ▝  {cyan}▟█▜█▖{blue}▀▀▀▀▀██▛▀▀▘       {cyan}󱥎  {blue}Storage (/){reset}   {storage}
 -    {cyan}     ▟█▘ ▜█▖    {blue}▝█▛          {cyan}  {blue}Colors{reset}        {colors}");
-+    {cyan}     ▟█▖  {blue}▝█▙ ▗█▛          {user_info} ~{reset}
-+    {cyan}  ▗▄▄▟██▄▄▄{blue}▝█▙█▛  {cyan}▖        {cyan}  {blue}System{reset}        {os_name}
-+    {cyan}  ▀▀▀▀▀▀▀▀▀▘{blue}▝██  {cyan}▟█▖       {cyan}  {blue}Kernel{reset}        {kernel_version}
-+    {blue}     ▟█▛     {blue}▝█▘{cyan}▟█▛        {cyan}  {blue}Shell{reset}         {shell}
-+    {blue}▟█████▛        {cyan}▟█████▛     {cyan}  {blue}Uptime{reset}        {uptime}
-+    {blue}   ▟█▛{cyan}▗█▖     {cyan}▟█▛          {cyan}  {blue}Desktop{reset}       {desktop}
-+    {blue}  ▝█▛  {cyan}██▖{blue}▗▄▄▄▄▄▄▄▄▄       {cyan}  {blue}Memory{reset}        {memory_usage}
-+    {blue}   ▝  {cyan}▟█▜█▖{blue}▀▀▀██▛▀▀▘       {cyan}󱥎  {blue}Storage (/){reset}   {storage}
-+    {cyan}     ▟█▘ ▜█▖  {blue}▝█▛          {cyan}  {blue}Colors{reset}        {colors}");
++  {cyan}     ▟█▖  {blue}▝█▙ ▗█▛        {user_info} ~{reset}
++  {cyan}  ▗▄▄▟██▄▄▄{blue}▝█▙█▛  {cyan}▖      {cyan}  {blue}System{reset}   {os_name}
++  {cyan}  ▀▀▀▀▀▀▀▀▀▘{blue}▝██  {cyan}▟█▖     {cyan}  {blue}Kernel{reset}   {kernel_version}
++  {blue}     ▟█▛     {blue}▝█▘{cyan}▟█▛      {cyan}  {blue}Shell{reset}    {shell}
++  {blue}▟█████▛        {cyan}▟█████▛   {cyan}  {blue}Uptime{reset}   {uptime}
++  {blue}   ▟█▛{cyan}▗█▖     {cyan}▟█▛        {cyan}  {blue}Desktop{reset}  {desktop}
++  {blue}  ▝█▛  {cyan}██▖{blue}▗▄▄▄▄▄▄▄▄▄     {cyan}  {blue}Memory{reset}   {memory_usage}
++  {blue}   ▝  {cyan}▟█▜█▖{blue}▀▀▀██▛▀▀▘     {cyan}󱥎  {blue}Storage{reset}  {storage}
++  {cyan}     ▟█▘ ▜█▖  {blue}▝█▛        {cyan}  {blue}Colors{reset}   {colors}");
  
      std::io::stdout()
          .lock()
+diff --git a/src/system.rs b/src/system.rs
+index 4cc1342..a1773c6 100644
+--- a/src/system.rs
++++ b/src/system.rs
+@@ -42,7 +42,7 @@ pub fn get_root_disk_usage() -> Result<String, io::Error> {
+     let usage = (used_size / total_size) * 100.0;
+ 
+     Ok(format!(
+-        "{used_size:.2} GiB / {total_size:.2} GiB ({cyan}{usage:.0}%{reset})",
++        "{used_size:<4.0} / {total_size:<4.0} GiB {cyan}{usage:.0}%{reset}",
+         cyan = COLORS.cyan,
+         reset = COLORS.reset,
+     ))
+@@ -81,7 +81,7 @@ pub fn get_memory_usage() -> Result<String, io::Error> {
+     let percentage_used = (used_memory / total_memory * 100.0).round() as u64;
+ 
+     Ok(format!(
+-        "{used_memory:.2} GiB / {total_memory:.2} GiB ({cyan}{percentage_used}%{reset})",
++        "{used_memory:<4.0} / {total_memory:<4.0} GiB {cyan}{percentage_used}%{reset}",
+         cyan = COLORS.cyan,
+         reset = COLORS.reset,
+     ))
