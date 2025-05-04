@@ -43,6 +43,9 @@ in {
     };
     # qt.platformTheme.name = "catppuccin";
     home-manager.users.${username} = {
+      # FIXME: remove this temporary hack
+      # (used to get home-manager to build)
+      catppuccin.mako.enable = false;
       catppuccin = {
         enable = true;
         flavor = cfg.flavor;
