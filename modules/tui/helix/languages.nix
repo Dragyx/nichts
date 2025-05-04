@@ -17,6 +17,7 @@ in {
       bash-language-server # Bash lsp
       shellcheck
       marksman # markdown
+      kdePackages.qtdeclarative
       haskell-language-server
       clippy
     ];
