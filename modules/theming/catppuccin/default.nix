@@ -34,8 +34,14 @@ in {
   config = mkIf cfg.enable {
     catppuccin = {
       enable = true;
-      flavor = cfg.flavor;
+      inherit (cfg) flavor accent;
     };
+    qt.style.catpupuccin = {
+      enable = true;
+      apply = true;
+      inherit (cfg) flavor accent;
+    };
+    # qt.platformTheme.name = "catppuccin";
     home-manager.users.${username} = {
       catppuccin = {
         enable = true;
@@ -46,6 +52,11 @@ in {
       ];
       gtk = {
         enable = true;
+      };
+      qt = {
+        enable = true;
+        style.name = "kvantum";
+        platformTheme.name = "kvantum";
       };
       catppuccin.gtk = {
         enable = true;
@@ -71,7 +82,7 @@ in {
         default = "mocha";
         example = "latte";
         description = "Select which catppuccin flavor to use";
-      }; #TODO: add accents
+      };
       accent = mkOption {
         type = types.enum [
           "rosewater"
