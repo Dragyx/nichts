@@ -33,7 +33,7 @@ index 05024df..348e46b 100644
      std::io::stdout()
          .lock()
 diff --git a/src/system.rs b/src/system.rs
-index 4cc1342..a1773c6 100644
+index 4cc1342..a54880e 100644
 --- a/src/system.rs
 +++ b/src/system.rs
 @@ -42,7 +42,7 @@ pub fn get_root_disk_usage() -> Result<String, io::Error> {
@@ -50,7 +50,7 @@ index 4cc1342..a1773c6 100644
  
      Ok(format!(
 -        "{used_memory:.2} GiB / {total_memory:.2} GiB ({cyan}{percentage_used}%{reset})",
-+        "{used_memory:<4.0} / {total_memory:<4.0} GiB {cyan}{percentage_used}%{reset}",
++        "{used_memory:<4.1} / {total_memory:<4.1} GiB {cyan}{percentage_used}%{reset}",
          cyan = COLORS.cyan,
          reset = COLORS.reset,
      ))
