@@ -108,7 +108,6 @@
         swap-size = "64G";
         main-disk = "/dev/disk/by-id/nvme-Samsung_SSD_960_PRO_512GB_S3EWNX0K401532W";
         storage-disks = {
-          "small" = "/dev/disk/by-id/nvme-eui.1847418009800001001b448b44810a1a";
           "medium" = "/dev/disk/by-id/wwn-0x50026b7783226e2f";
           "large" = "/dev/disk/by-id/wwn-0x5000c500bda8dba1";
         };
