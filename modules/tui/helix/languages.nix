@@ -18,6 +18,7 @@ in {
       shellcheck
       marksman # markdown
       haskell-language-server
+      clippy
     ];
     home-manager.users.${username} = {
       programs.helix.languages = {
@@ -94,6 +95,14 @@ in {
         ];
 
         language-server = {
+          rust-analyzer.config = {
+            check = {
+              command = "clippy";
+              extraArgs = ["--" "-W" "clippy::pedantic" "-W" "clippy::nursery" "-W" "clippy::perf"];
+            };
+            cargo.features = "all";
+          };
+
           bash-language-server = {
             command = getExe pkgs.bash-language-server;
             args = ["start"];
