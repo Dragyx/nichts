@@ -24,6 +24,7 @@ in {
     imv
     yt-dlp
     ghc
+    dig
     vim
     bat
     element-desktop
