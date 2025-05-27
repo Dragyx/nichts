@@ -34,5 +34,10 @@
       url = "github:quickshell-mirror/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    watt = {      
+      url = "github:notashelf/watt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

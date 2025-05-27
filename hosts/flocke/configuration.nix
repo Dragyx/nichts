@@ -69,6 +69,7 @@ in {
       session = "Hyprland";
     };
     system = rec {
+      watt.enable = true;
       network.hostname = "flocke";
       username = "dragyx";
       gitPath = "/home/${username}/repos/nichts";

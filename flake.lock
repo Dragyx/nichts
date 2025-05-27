@@ -136,7 +136,28 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-small": "nixpkgs-small",
-        "quickshell": "quickshell"
+        "quickshell": "quickshell",
+        "watt": "watt"
+      }
+    },
+    "watt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1747831988,
+        "narHash": "sha256-EViwQ/HHq15+8x6n6lnt0FsKmHotSJP/c5Mh2bB7+OA=",
+        "owner": "notashelf",
+        "repo": "watt",
+        "rev": "017793288a2b75fbb548f878c730bdb6288d7e46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "notashelf",
+        "repo": "watt",
+        "type": "github"
       }
     }
   },
