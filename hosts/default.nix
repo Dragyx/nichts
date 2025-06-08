@@ -10,11 +10,6 @@
     ../modules
   ];
 in {
-  iso = lib.nixosSystem {
-    inherit system specialArgs;
-    modules =
-      baseModules ++ [./iso];
-  };
   flocke = lib.nixosSystem {
     inherit system specialArgs;
     modules =
