@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{config, ...}: let
   username = config.modules.system.username;
 in {
   imports = [
@@ -12,21 +8,13 @@ in {
 
   # framework specific for BIOS updates
   services.fwupd.enable = true;
-  virtualisation.docker.enable = true;
   users.users.${username}.extraGroups = ["docker"];
-
-  # virtualisation.docker.rootless = {
-  #   enable = true;
-  #   setSocketVariable = true;
-  # };
 
   services.logrotate.checkConfig = false;
 
   networking.hostId = "adf23c31";
   networking.interfaces.wlp1s0.useDHCP = true;
   networking.networkmanager.enable = true;
-
-  environment.systemPackages = with pkgs; [networkmanager]; # cli tool for managing connections
 
   boot = {
     kernelParams = [];
@@ -60,16 +48,13 @@ in {
 
   # be nice to your ssds
   services.fstrim.enable = true;
-
-  security.polkit.enable = true;
-
   modules = {
     login = {
       greetd.enable = true;
       session = "Hyprland";
     };
     system = rec {
-      watt.enable = true;
+      # watt.enable = true;
       network.hostname = "flocke";
       username = "dragyx";
       gitPath = "/home/${username}/repos/nichts";
@@ -89,34 +74,6 @@ in {
             y = 0;
           };
         }
-        rec {
-          name = "CodingWeekend";
-          device = "DP-9";
-          resolution = {
-            x = 2560;
-            y = 1440;
-          };
-          refresh_rate = 60.0;
-          scale = 1;
-          position = {
-            x = -152;
-            y = -resolution.y;
-          };
-        }
-        rec {
-          name = "CodingWeekend2";
-          device = "DP-10";
-          resolution = {
-            x = 2560;
-            y = 1440;
-          };
-          refresh_rate = 60.0;
-          scale = 1;
-          position = {
-            x = -152;
-            y = -resolution.y;
-          };
-        }
       ];
       wayland = true;
     };
@@ -125,6 +82,7 @@ in {
       enableDirenv = true;
     };
     programs = {
+      codium.enable = true;
       minecraft.enable = false;
       minecraft.wayland = true;
       vesktop.enable = false;
