@@ -17,7 +17,7 @@ in {
     pwvucontrol
     signal-desktop-bin
     pandoc
-    texlive.combined.scheme-small
+    texlive.combined.scheme-full
     betterdiscordctl
     television
     firefox
@@ -28,6 +28,7 @@ in {
     vim
     bat
     element-desktop
+    microfetch
     typst
     prismlauncher
     cm_unicode
@@ -52,6 +53,7 @@ in {
     nix-index
     nautilus
     btop
+    ripgrep
 
     alsa-utils
     foot
