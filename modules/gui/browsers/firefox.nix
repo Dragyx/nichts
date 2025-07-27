@@ -26,11 +26,12 @@ in {
       programs.firefox = {
         enable = true;
         profiles = {
-          main = {
+          default = {
             id = 0;
             isDefault = true;
             search.default = "ddg";
             search.force = true;
+            extensions.force = true;
             settings = {
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "media.ffmpeg.vaapi.enabled" = true; # enable hardware accelerated video playback (vaapi)
