@@ -47,7 +47,6 @@ in {
       firefox.extensions = {
         "bitwarden-password-manager" = "{446900e4-71c2-419f-a6a7-df9c091e268b}";
         "darkreader" = "addon@darkreader.org";
-        "tree-style-tab" = "treestyletab@piro.sakura.ne.jp";
         "vvz-coursereview" = "{64a9abc5-b0dd-4855-831c-7b73290c0613}";
         "privacy-badger17" = "jid1-MnnxcxisBPnSXQ@jetpack";
         "terms-of-service-didnt-read" = "jid0-3GUEt1r69sQNSrca5p8kx9Ezc3U@jetpack";
