@@ -2,6 +2,7 @@ _: {
   imports = [
     ./auto-partition.nix
     ./bluetooth.nix
+    ./controllers.nix
     ./fonts.nix
     ./gpu
     ./home-manager.nix
