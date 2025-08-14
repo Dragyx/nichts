@@ -1,15 +1,19 @@
-{inputs, config, lib, ...}:
-let
-  cfg = config.modules.system.watt;  
+{
+  inputs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.modules.system.watt;
   inherit (lib) mkIf mkEnableOption;
-in{
+in {
   imports = [
     inputs.watt.nixosModules.default
   ];
   options.modules.system.watt.enable = mkEnableOption "watt";
   config = mkIf cfg.enable {
     services.power-profiles-daemon.enable = false;
-    services.superfreq = {
+    services.watt = {
       enable = true;
       settings = {
         charger = {
