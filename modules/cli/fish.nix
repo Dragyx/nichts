@@ -64,7 +64,7 @@ in {
             mv = "mv -iv";
             ls = "eza --icons auto";
             la = "eza --icons auto -a";
-            ll = "eza --icons auto -lha";
+            ll = "eza --icons auto -lhas modified";
             lt = "eza --icons auto -T";
             zj = "zellij";
             lg = "lazygit";
