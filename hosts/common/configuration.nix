@@ -5,6 +5,7 @@
   ...
 }: let
   username = config.modules.system.username;
+  inherit (lib) mkDefault;
 in {
   home-manager.backupFileExtension = "bak";
   networking.dhcpcd.wait = "background";
@@ -31,18 +32,19 @@ in {
       fonts.enable = true;
     };
     programs = {
-      foot.enable = lib.mkDefault true;
-      foot.server = lib.mkDefault true;
-      nh.enable = lib.mkDefault true;
-      radare2.enable = lib.mkDefault true;
-      fish.enable = lib.mkDefault true;
-      atuin.enable = lib.mkDefault true;
-      zellij.enable = lib.mkDefault true;
+      foot.enable = mkDefault true;
+      foot.server = mkDefault true;
+      nh.enable = mkDefault true;
+      radare2.enable = mkDefault true;
+      fish.enable = mkDefault true;
+      carapace.enable = mkDefault true;
+      atuin.enable = mkDefault true;
+      zellij.enable = mkDefault true;
       editors.helix = {
-        enable = lib.mkDefault true;
-        default = lib.mkDefault true;
+        enable = mkDefault true;
+        default = mkDefault true;
       };
-      git.pullRebase = lib.mkDefault true; # avoid merge hell
+      git.pullRebase = mkDefault true; # avoid merge hell
 
       firefox.extensions = {
         "bitwarden-password-manager" = "{446900e4-71c2-419f-a6a7-df9c091e268b}";

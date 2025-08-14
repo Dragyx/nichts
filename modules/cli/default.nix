@@ -1,13 +1,14 @@
 _: {
   imports = [
-    ./git.nix
-    ./starship.nix
-    ./zsh.nix
-    ./neovim.nix
-    ./fish.nix
-    ./ranger.nix
-    ./nh.nix
     ./atuin.nix
+    ./carapace.nix
+    ./fish.nix
+    ./git.nix
+    ./neovim.nix
+    ./nh.nix
+    ./ranger.nix
+    ./starship.nix
     ./zellij.nix
+    ./zsh.nix
   ];
 }
