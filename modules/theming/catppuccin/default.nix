@@ -61,16 +61,6 @@ in {
         style.name = "kvantum";
         platformTheme.name = "kvantum";
       };
-      catppuccin.gtk = {
-        enable = true;
-        inherit (cfg) flavor accent;
-        icon = {
-          enable = true;
-          inherit (cfg) flavor accent;
-        };
-        size = "standard";
-        tweaks = ["normal"];
-      };
       home.sessionVariables = {
         GTK_THEME = "catppuccin";
         GTK_USE_PORTAL = "1";
