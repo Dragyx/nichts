@@ -19,5 +19,6 @@
     superTuxKart
     # nnn
     pympress
+    godot
   ];
 }
