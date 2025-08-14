@@ -82,7 +82,6 @@ in {
       enableDirenv = true;
     };
     programs = {
-      codium.enable = true;
       minecraft.enable = false;
       minecraft.wayland = true;
       vesktop.enable = false;
