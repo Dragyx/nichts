@@ -86,7 +86,7 @@ in {
           directory = {
             truncation_length = 3;
             truncate_to_repo = false;
-            truncation_symbol = "…/";
+            truncation_symbol = "[…]/";
           };
           c.symbol = " ";
           directory.read_only = " 󰌾";
