@@ -4,6 +4,7 @@ _: {
     ./carapace.nix
     ./fish.nix
     ./git.nix
+    ./jujutsu.nix
     ./neovim.nix
     ./nh.nix
     ./ranger.nix

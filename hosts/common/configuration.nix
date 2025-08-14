@@ -40,6 +40,7 @@ in {
       carapace.enable = mkDefault true;
       atuin.enable = mkDefault true;
       zellij.enable = mkDefault true;
+      jujutsu.enable = mkDefault true;
       editors.helix = {
         enable = mkDefault true;
         default = mkDefault true;
