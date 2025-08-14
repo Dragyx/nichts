@@ -30,7 +30,7 @@ in {
             jj = {
               description = "The current jj status";
               when = "jj --ignore-working-copy root";
-              symbol = "🥋 ";
+              symbol = "[](bold blue) ";
               command = ''
                 jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
                   separate(" ",
@@ -81,7 +81,7 @@ in {
           add_newline = false;
           command_timeout = 1000;
           line_break = {
-            disabled = true;
+            disabled = false;
           };
           directory = {
             truncation_length = 3;
