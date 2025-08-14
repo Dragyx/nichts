@@ -19,6 +19,7 @@ in {
           git_commit.disabled = true;
           git_metrics.disabled = true;
           git_branch.disabled = true;
+          cmd_duration.min_time = 5000;
           format = ''
             $all''${custom.git_branch}''${custom.git_commit}''${custom.git_metrics}''${custom.git_status}
           '';
