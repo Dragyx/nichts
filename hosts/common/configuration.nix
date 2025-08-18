@@ -60,5 +60,5 @@ in {
     theming.theme = "catppuccin";
   };
 
-  time.timeZone = "Europe/Zurich";
+  time.timeZone = "Asia/Hong_Kong";
 }

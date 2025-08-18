@@ -15,7 +15,6 @@
         "flakes" # flakes
         "nix-command" # experimental nix commands
         "cgroups" # allow nix to execute builds inside cgroups
-        "repl-flake" # needed by nh
       ];
       warn-dirty = false;
     };
