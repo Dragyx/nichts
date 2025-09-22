@@ -25,7 +25,7 @@ in {
       swww
       hyprshade
       hyprlock
-      rofi-wayland
+      rofi
       waybar
       lxqt.lxqt-openssh-askpass
       libdrm

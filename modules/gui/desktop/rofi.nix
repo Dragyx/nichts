@@ -7,11 +7,6 @@
 with lib; let
   username = config.modules.system.username;
   cfg = config.modules.programs.rofi;
-  rofi-pkg = (
-    if config.modules.system.wayland
-    then pkgs.rofi-wayland
-    else pkgs.rofi
-  );
 in {
   options.modules.programs.rofi.enable = mkEnableOption "rofi";
   options.modules.system.wayland = mkOption {
@@ -22,12 +17,12 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      rofi-pkg
+      pkgs.rofi
     ];
     home-manager.users.${username} = {
       programs.rofi = {
         enable = true;
-        package = rofi-pkg;
+        package = pkgs.rofi;
       };
     };
   };
