@@ -56,6 +56,7 @@ in {
     btop
     ripgrep
 
+    gnupg
     alsa-utils
     foot
 
