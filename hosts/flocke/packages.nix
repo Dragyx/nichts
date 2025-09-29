@@ -3,7 +3,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    amdvlk
     texlive.combined.scheme-medium
     nextcloud-client
     # etcher
