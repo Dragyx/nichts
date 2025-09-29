@@ -111,6 +111,7 @@ in {
 
           clangd = {
             command = "${pkgs.clang-tools}/bin/clangd";
+            args = ["--enable-config"];
             clangd.fallbackFlags = ["-std=c++2b"];
           };
 

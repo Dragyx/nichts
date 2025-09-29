@@ -35,7 +35,6 @@ in {
     openjdk
     material-icons
     material-design-icons
-    libreoffice
     spotify
     # minecraft
     prismlauncher

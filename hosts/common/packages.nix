@@ -8,12 +8,14 @@
       ipython
     ];
 in {
+  programs.openvpn3.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     (python3.withPackages python-packages)
     man-pages
     discord
+    wireguard-tools
     pwvucontrol
     signal-desktop-bin
     pandoc
@@ -27,6 +29,7 @@ in {
     ghc
     dig
     vim
+    openconnect
     bat
     element-desktop
     microfetch
@@ -55,6 +58,7 @@ in {
     nautilus
     btop
     ripgrep
+    patchelf
 
     gnupg
     alsa-utils
@@ -81,7 +85,8 @@ in {
 
     dua
 
-    libreoffice-qt
+    libreoffice-still
+    languagetool
     hunspell
     hunspellDicts.en_US
     hunspellDicts.de_AT

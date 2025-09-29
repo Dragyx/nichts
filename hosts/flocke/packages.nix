@@ -10,7 +10,6 @@
     thunderbird
     material-icons
     material-design-icons
-    libreoffice
     spotify
     feh
     # Animeeeeee!
@@ -19,5 +18,8 @@
     # nnn
     pympress
     godot
+    ocaml
+    flatcc
+    fuse
   ];
 }

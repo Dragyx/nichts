@@ -22,7 +22,7 @@ in {
       settings = {
         default_session = {
           command = ''
-            ${pkgs.greetd.tuigreet}/bin/tuigreet \
+            ${pkgs.tuigreet}/bin/tuigreet \
               -c \"${session}\" \
               -r 
               -t --time-format "DD.MM.YYYY"
