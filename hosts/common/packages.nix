@@ -20,6 +20,7 @@ in {
     texlive.combined.scheme-full
     betterdiscordctl
     television
+    fd
     firefox
     imv
     yt-dlp
