@@ -121,7 +121,7 @@ in {
           xwayland = {
             force_zero_scaling = true;
           };
-          gestures.workspace_swipe = true;
+          # gestures.workspace_swipe = true;
           debug.enable_stdout_logs = true;
           debug.disable_logs = true;
           windowrulev2 = [
@@ -137,6 +137,7 @@ in {
             # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
             "SUPER, RETURN, exec, footclient"
             "SUPER SHIFT, RETURN, exec, rofi -show drun -show-icons"
+            "SUPER, ESCAPE, exec, hyprlock"
             "SUPER SHIFT, Q, killactive,"
             "SUPER, B, exec, footclient --title=bluetuith ${pkgs.bluetuith}/bin/bluetuith"
             "SUPER, N, exec, footclient --title=nmtui ${pkgs.networkmanager}/bin/nmtui"
