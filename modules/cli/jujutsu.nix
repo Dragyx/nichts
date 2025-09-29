@@ -35,7 +35,7 @@ in {
               "bookmark"
               "move"
               "-f"
-              "heads(::@- & bookmarks())"
+              "exactly(heads(::@- & bookmarks()), 1)"
               "-t"
               "@-"
             ];
