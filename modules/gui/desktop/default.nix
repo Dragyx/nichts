@@ -1,5 +1,6 @@
-_: {
+{
   imports = [
+    ./cosmic.nix
     ./cursor.nix
     ./greetd.nix
     ./gtk.nix

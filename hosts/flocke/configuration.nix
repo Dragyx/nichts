@@ -113,8 +113,8 @@ in {
         enable = true;
         bar.enable = true;
       };
-      cosmic.enable = false;
     };
+    cosmic.enable = true;
   };
 
   # This value determines the NixOS release from which the default
