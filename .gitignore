@@ -1,1 +1,3 @@
 ./assets/*
+*.qcow2
+result
