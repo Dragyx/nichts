@@ -19,7 +19,10 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   #TODO: MOVE this somewhere else
-  users.users.${username}.uid = 1000;
+  users.users.${username} = {
+    initialPassword = username;
+    uid = 1000;
+  };
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [zlib];
