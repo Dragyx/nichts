@@ -3,19 +3,21 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   username = config.modules.system.username;
   cfg = config.modules.theming.themes.catppuccin;
+  cfg-hyprland = config.modules.WM.hyprland;
   inherit (lib) mkIf mkDefault getExe;
-  neko-custom =
-    pkgs.wayneko.overrideAttrs
-    (final: prev: {
+  neko-custom = pkgs.wayneko.overrideAttrs (
+    final: prev: {
       src = pkgs.fetchgit {
         url = "https://copeberg.org/virt/wayneko";
         rev = "3ed4e4e1f847213e712fe22e0278ec62c4fa2cf2";
         hash = "sha256-NxNrcQkx82SQ5GRqcJbbgM/Qg3GY8Whu5m5wI3zQi18=";
       };
-    });
+    }
+  );
 
   hyprland-catppuccin = pkgs.stdenv.mkDerivation {
     name = "hyprland-catppuccin";
@@ -45,7 +47,7 @@
   hyprlock-catppuccin = pkgs.stdenv.mkDerivation {
     name = "hyprlock-catppuccin";
     version = "0.0";
-    runtimeInputs = [hyprland-catppuccin];
+    runtimeInputs = [ hyprland-catppuccin ];
     src = pkgs.fetchFromGitHub {
       owner = "catppuccin";
       repo = "hyprlock";
@@ -73,8 +75,9 @@
     url = "https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png";
     hash = "sha256-A85wBdJ2StkgODmxtNGfbNq8PU3G3kqnBAwWvQXVtqo=";
   };
-in {
-  config = mkIf cfg.enable {
+in
+{
+  config = mkIf (cfg.enable && cfg-hyprland.enable) {
     environment.systemPackages = with pkgs; [
       hyprlock
       neko-custom
