@@ -51,12 +51,7 @@ in
   # be nice to your ssds
   services.fstrim.enable = true;
   modules = {
-    login = {
-      greetd.enable = true;
-      session = "Hyprland";
-    };
     system = rec {
-      # watt.enable = true;
       network.hostname = "flocke";
       username = "dragyx";
       gitPath = "/home/${username}/repos/nichts";
@@ -107,17 +102,20 @@ in
     services.pipewire.enable = true;
 
     WM = {
-      waybar.enable = true;
+      waybar.enable = false;
       hyprland = {
-        enable = true;
-        gnome-keyring.enable = true;
+        enable = false;
+        gnome-keyring.enable = false;
       };
       quickshell = {
         enable = true;
         bar.enable = true;
       };
     };
-    cosmic.enable = true;
+    cosmic = {
+      enable = true;
+      greeter.enable = true;
+    };
   };
 
   # This value determines the NixOS release from which the default
