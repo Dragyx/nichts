@@ -1,16 +1,17 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   networking.hostId = "aefab460";
   networking.interfaces.enp7s0.useDHCP = true;
   systemd.services.zfs-mount.enable = true;
   networking.networkmanager.enable = true;
-  environment.systemPackages = with pkgs; [networkmanager]; # cli tool for managing connections
+  environment.systemPackages = with pkgs; [ networkmanager ]; # cli tool for managing connections
 
   services.gnome.gnome-keyring.enable = true;
 
   virtualisation.docker.enable = true;
-  users.users.dragyx.extraGroups = ["docker"];
+  users.users.dragyx.extraGroups = [ "docker" ];
   boot = {
-    kernelParams = [];
+    kernelParams = [ ];
     loader = {
       efi.efiSysMountPoint = "/boot";
       efi.canTouchEfiVariables = true;
@@ -47,10 +48,6 @@
   # };
 
   modules = {
-    login = {
-      greetd.enable = true;
-      session = "Hyprland";
-    };
     system = rec {
       network.hostname = "schnee";
       username = "dragyx";
@@ -141,11 +138,15 @@
       pipewire.enable = true;
     };
     WM = {
-      waybar.enable = true;
+      waybar.enable = false;
       hyprland = {
-        enable = true;
-        gnome-keyring.enable = true;
+        enable = false;
+        gnome-keyring.enable = false;
       };
+    };
+    cosmic = {
+      enable = true;
+      greeter.enable = true;
     };
   };
   system.stateVersion = "21.11"; # Did you read the comment?
