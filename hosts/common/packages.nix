@@ -46,7 +46,6 @@ in
     unzip
     calc
     rsync
-    evince
     wlr-randr
     gnumake
     python3

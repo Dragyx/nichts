@@ -30,5 +30,8 @@ in
     wine
     discord
     betterdiscordctl
+
+    airshipper
+    alsa-lib
   ];
 }
