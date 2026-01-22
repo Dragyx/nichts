@@ -3,10 +3,12 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   username = config.modules.system.username;
   inherit (lib) mkDefault;
-in {
+in
+{
   home-manager.backupFileExtension = "bak";
   networking.dhcpcd.wait = "background";
   services.locate = {
@@ -14,7 +16,7 @@ in {
     interval = "hourly";
     package = pkgs.plocate;
   };
-  security.sudo.package = pkgs.sudo.override {withInsults = true;};
+  security.sudo.package = pkgs.sudo.override { withInsults = true; };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -25,7 +27,7 @@ in {
   };
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [zlib];
+    libraries = with pkgs; [ zlib ];
   };
 
   modules = {
@@ -42,6 +44,7 @@ in {
       fish.enable = mkDefault true;
       carapace.enable = mkDefault true;
       atuin.enable = mkDefault true;
+      zed.enable = mkDefault true;
       zellij.enable = mkDefault true;
       jujutsu.enable = mkDefault true;
       editors.helix = {
