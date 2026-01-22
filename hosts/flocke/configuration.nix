@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   username = config.modules.system.username;
-in {
+in
+{
   imports = [
     ../common/default.nix
     ./packages.nix
@@ -8,7 +10,7 @@ in {
 
   # framework specific for BIOS updates
   services.fwupd.enable = true;
-  users.users.${username}.extraGroups = ["docker"];
+  users.users.${username}.extraGroups = [ "docker" ];
 
   services.logrotate.checkConfig = false;
 
@@ -17,9 +19,9 @@ in {
   networking.networkmanager.enable = true;
 
   boot = {
-    kernelParams = [];
-    initrd.supportedFilesystems = ["ext4"];
-    supportedFilesystems = ["ext4"];
+    kernelParams = [ ];
+    initrd.supportedFilesystems = [ "ext4" ];
+    supportedFilesystems = [ "ext4" ];
     loader = {
       efi.efiSysMountPoint = "/boot";
       efi.canTouchEfiVariables = true;
@@ -59,6 +61,7 @@ in {
       username = "dragyx";
       gitPath = "/home/${username}/repos/nichts";
       bluetooth.enable = true;
+      amd.enable = true;
       monitors = [
         {
           name = "LaptopMain";
