@@ -1,13 +1,15 @@
 # which default packages to use for the system
-{pkgs, ...}: let
-  python-packages = ps:
-    with ps; [
+{ pkgs, ... }:
+let
+  python-packages =
+    ps: with ps; [
       pandas
       numpy
       opencv4
       ipython
     ];
-in {
+in
+{
   programs.openvpn3.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -15,11 +17,12 @@ in {
     (python3.withPackages python-packages)
     man-pages
     discord
+    ani-cli-advanced
     wireguard-tools
     pwvucontrol
     signal-desktop-bin
     pandoc
-    texlive.combined.scheme-full
+    texlive.combined.scheme-medium
     betterdiscordctl
     television
     fd
