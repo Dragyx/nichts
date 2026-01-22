@@ -19,7 +19,6 @@
     pympress
     godot
     ocaml
-    flatcc
     fuse
   ];
 }
