@@ -14,7 +14,7 @@ in {
       powerOnBoot = true;
     };
 
-    services.blueman.enable = true;
+    services.blueman.enable = false;
 
     # Bluetooth headset media control buttons
     systemd.user.services.mpris-proxy = {
