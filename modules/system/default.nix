@@ -6,7 +6,6 @@ _: {
     ./fonts.nix
     ./gpu
     ./home-manager.nix
-    ./keyring.nix
     ./monitors.nix
     ./network.nix
     ./nix
