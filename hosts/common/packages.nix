@@ -92,5 +92,8 @@ in {
     hunspellDicts.de_AT
     cbonsai
     zed-editor
+
+    # github cli
+    gh
   ];
 }
