@@ -91,5 +91,6 @@ in {
     hunspellDicts.en_US
     hunspellDicts.de_AT
     cbonsai
+    zed-editor
   ];
 }
