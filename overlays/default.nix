@@ -2,7 +2,7 @@
   microfetch_custom = self: super: {
     microfetch = super.microfetch.overrideAttrs (final: prev: {
       patches = [
-        ./microfetch_shrink_logo.patch
+        # ./microfetch_shrink_logo.patch
       ];
     });
   };
