@@ -3,15 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.modules.system.nvidia;
   inherit (lib) mkIf mkEnableOption mkMerge;
   nvidia-pkg = config.boot.kernelPackages.nvidiaPackages.stable;
-in {
+in
+{
   options.modules.system.nvidia.enable = mkEnableOption "nvidia";
   config = mkIf cfg.enable {
     # taken (mostly) from https://github.com/bloxx12/nichts/blob/main/options/common/gpu/nvidia.nix
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
@@ -46,7 +48,6 @@ in {
         GBM_BACKEND = "nvidia-drm";
         __GLX_VENDOR_LIBRARY_NAME = "nvidia";
         __GL_GSYNC_ALLOWED = "0";
-        __EGL_VENDOR_LIBRARY_FILENAMES = "${nvidia-pkg}/share/glvnd/egl_vendor.d/10_nvidia.json";
       }
       (mkIf config.modules.system.wayland {
         XDG_SESSION_TYPE = "wayland";
