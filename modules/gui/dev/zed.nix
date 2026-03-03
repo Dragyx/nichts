@@ -42,6 +42,11 @@ in
             light = mkForce "One Light";
             dark = mkForce "One Dark";
           };
+          lsp = {
+            nil = {
+              autoArchive = true;
+            };
+          };
         };
       };
     };
