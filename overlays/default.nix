@@ -45,9 +45,5 @@ in
     add_catppuccin_wallpapers
     add_nixpkgs_small
     microfetch_custom
-    (self: super: {
-      cosmic-settings-daemon = self.small.cosmic-settings-daemon;
-      cosmic-applets = self.small.cosmic-applets;
-    })
   ];
 }
