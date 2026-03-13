@@ -13,6 +13,7 @@
         "flakes" # flakes
         "nix-command" # experimental nix commands
         "cgroups" # allow nix to execute builds inside cgroups
+        "pipe-operators"
       ];
       warn-dirty = false;
     };
