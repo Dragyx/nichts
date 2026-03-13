@@ -10,42 +10,7 @@
 
   virtualisation.docker.enable = true;
   users.users.dragyx.extraGroups = [ "docker" ];
-  boot = {
-    kernelParams = [ ];
-    loader = {
-      efi.efiSysMountPoint = "/boot";
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        extraEntries = ''
-          menuentry "Reboot" {
-            reboot
-          }
-          menuentry "Poweroff" {
-            halt
-          }
-        '';
-      };
-    };
-  };
   security.polkit.enable = true;
-
-  #TODO: Add to  modules.system.monitors as option
-  home-manager.users."dragyx".wayland.windowManager.hyprland.settings = {
-    workspace = [
-      "1,monitor:DP-2,default:true"
-    ];
-    exec-once = [
-      "xrandr --output DP-2 --primary" # make sure xwayland windows open on right monitor:
-    ];
-  };
-
-  # services.ollama = {
-  #   enable = true;
-  #   acceleration = "cuda";
-  # };
 
   modules = {
     system = rec {
@@ -103,6 +68,7 @@
       disks = {
         auto-partition.enable = true;
         swap-size = "64G";
+        boot-loader = "limine";
         main-disk = "/dev/disk/by-id/nvme-Samsung_SSD_960_PRO_512GB_S3EWNX0K401532W";
         storage-disks = {
           "medium" = "/dev/disk/by-id/wwn-0x50026b7783226e2f";

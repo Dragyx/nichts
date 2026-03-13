@@ -62,6 +62,15 @@ in
       default = "";
       example = "INST";
     };
+    boot-loader = mkOption {
+      type = types.enum [
+        "grub"
+        "limine"
+      ];
+      description = "The boot loader to use. (currently: grub or limine)";
+      default = "grub";
+      example = "limine";
+    };
   };
 
   config = mkIf cfg.auto-partition.enable {
@@ -84,7 +93,7 @@ in
         efi.efiSysMountPoint = "/boot";
         efi.canTouchEfiVariables = true;
         grub = {
-          enable = true;
+          enable = cfg.boot-loader == "grub";
           device = "nodev";
           efiSupport = true;
           enableCryptodisk = true;
@@ -96,6 +105,10 @@ in
               halt
             }
           '';
+        };
+        limine = {
+          enable = cfg.boot-loader == "limine";
+          efiSupport = true;
         };
       };
     };
