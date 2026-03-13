@@ -20,7 +20,7 @@ in
     ani-cli-advanced
     wireguard-tools
     pwvucontrol
-    signal-desktop-bin
+    signal-desktop
     pandoc
     texlive.combined.scheme-medium
     betterdiscordctl
