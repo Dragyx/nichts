@@ -7,7 +7,7 @@
 let
   cfg = config.modules.system.nvidia;
   inherit (lib) mkIf mkEnableOption mkMerge;
-  nvidia-pkg = config.boot.kernelPackages.nvidiaPackages.stable;
+  nvidia-pkg = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 in
 {
   options.modules.system.nvidia.enable = mkEnableOption "nvidia";

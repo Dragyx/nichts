@@ -63,7 +63,6 @@ in
         "ublock-origin" = "uBlock0@raymondhill.net";
       };
     };
-    theming.theme = "catppuccin";
   };
 
   time.timeZone = "Europe/Zurich";
