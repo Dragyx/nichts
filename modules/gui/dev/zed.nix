@@ -44,7 +44,16 @@ in
           };
           lsp = {
             nil = {
-              autoArchive = true;
+              diagnostics = {
+                bindingEndHintMinLines = 10;
+              };
+              nix = {
+                flake = {
+                  autoArchive = true;
+                  autoEvalInputs = true;
+                  nixpkgsInputName = "nixpkgs";
+                };
+              };
             };
           };
         };
