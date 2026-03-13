@@ -2,12 +2,20 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.modules.system.disks;
   inherit (config.modules.system) username;
   inherit (config.users.users.${username}) uid;
-  inherit (lib) mkIf types mkOption mkEnableOption;
-in {
+  inherit (lib)
+    mkIf
+    types
+    mkOption
+    mkEnableOption
+    optional
+    ;
+in
+{
   options.modules.system.disks = {
     auto-partition.enable = mkEnableOption "disko";
     main-disk = mkOption {
@@ -33,12 +41,21 @@ in {
     storage-disks = mkOption {
       type = types.attrsOf types.str;
       description = "Declare additional storage disks (The whole disk will be a btrfs volume)";
-      default = {};
-      example = {"extra" = "/dev/sda";};
+      default = { };
+      example = {
+        "extra" = "/dev/sda";
+      };
+    };
+    lazy-load = mkOption {
+      type = types.bool;
+      description = "Whether to lazy-load the storage disks";
+      default = true;
+      example = false;
     };
     name-suffix = mkOption {
       type = types.str;
-      description = ''        Will rename partitions and cryptvolumes.
+      description = ''
+        Will rename partitions and cryptvolumes.
                 MUST BE USED WHEN USING THIS CONFIGURATION AS INSTALLER FOR OTHER DEVICES.
                 Otherwise disko can mess up existing partitions since they are called the same
       '';
@@ -50,7 +67,7 @@ in {
   config = mkIf cfg.auto-partition.enable {
     assertions = [
       {
-        assertion = !((uid == null) && (cfg.storage-disks == {}));
+        assertion = !((uid == null) && (cfg.storage-disks == { }));
         message = "To mount storage disks, the uid (users.users.<name>.uid) must be set!";
       }
     ];
@@ -58,11 +75,11 @@ in {
     services.btrfs.autoScrub = {
       enable = true;
       interval = "weekly";
-      fileSystems = ["/"];
+      fileSystems = [ "/" ];
     };
     boot = {
-      initrd.supportedFilesystems = ["btrfs"];
-      supportedFilesystems = ["btrfs"];
+      initrd.supportedFilesystems = [ "btrfs" ];
+      supportedFilesystems = [ "btrfs" ];
       loader = {
         efi.efiSysMountPoint = "/boot";
         efi.canTouchEfiVariables = true;
@@ -85,97 +102,153 @@ in {
 
     # reference: https://haseebmajid.dev/posts/2024-07-30-how-i-setup-btrfs-and-luks-on-nixos-using-disko/
     disko.devices = {
-      disk =
-        {
-          main = {
-            type = "disk";
-            device = cfg.main-disk;
-            content = {
-              type = "gpt";
-              partitions = {
-                ESP = {
-                  label = "boot" + cfg.name-suffix;
-                  size = cfg.esp-size;
-                  type = "EF00";
-                  content = {
-                    type = "filesystem";
-                    format = "vfat";
-                    mountpoint = "/boot";
-                    mountOptions = ["defaults"];
-                  };
+      disk = {
+        main = {
+          type = "disk";
+          device = cfg.main-disk;
+          content = {
+            type = "gpt";
+            partitions = {
+              ESP = {
+                label = "boot" + cfg.name-suffix;
+                size = cfg.esp-size;
+                type = "EF00";
+                content = {
+                  type = "filesystem";
+                  format = "vfat";
+                  mountpoint = "/boot";
+                  mountOptions = [ "defaults" ];
                 };
-                root = {
-                  size = "100%";
-                  label = "luks" + cfg.name-suffix;
+              };
+              root = {
+                size = "100%";
+                label = "luks" + cfg.name-suffix;
+                content = {
+                  type = "luks";
+                  name = "cryptroot" + cfg.name-suffix;
                   content = {
-                    type = "luks";
-                    name = "cryptroot" + cfg.name-suffix;
-                    content = {
-                      type = "btrfs";
-                      extraArgs = ["-L" "nixos${cfg.name-suffix}" "-f"];
-                      subvolumes = {
+                    type = "btrfs";
+                    extraArgs = [
+                      "-L"
+                      "nixos${cfg.name-suffix}"
+                      "-f"
+                    ];
+                    subvolumes =
+                      let
+                        mkMountOptions = subvol: [
+                          "subvol=${subvol}"
+                          "compress=zstd"
+                          "noatime"
+                        ];
+                      in
+                      {
                         "/root" = {
                           mountpoint = "/";
-                          mountOptions = ["subvol=root" "compress=zstd" "noatime"];
+                          mountOptions = mkMountOptions "root";
                         };
                         "/home" = {
                           mountpoint = "/home";
-                          mountOptions = ["subvol=home" "compress=zstd" "noatime"];
+                          mountOptions = mkMountOptions "home";
                         };
                         "/nix" = {
                           mountpoint = "/nix";
-                          mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
+                          mountOptions = mkMountOptions "nix";
                         };
                         "/log" = {
                           mountpoint = "/var/log";
-                          mountOptions = ["subvol=log" "compress=zstd" "noatime"];
+                          mountOptions = mkMountOptions "log";
                         };
                         "/swap" = mkIf (cfg.swap-size != null) {
                           mountpoint = "/swap";
                           swap.swapfile.size = cfg.swap-size;
                         };
                       };
+                  };
+                };
+              };
+            };
+          };
+        };
+      }
+      // lib.mapAttrs (name: device: {
+        type = "disk";
+        device = device;
+        content = {
+          type = "gpt";
+          partitions = {
+            "${name}${cfg.name-suffix}" = {
+              size = "100%";
+              label = "luks-${name}${cfg.name-suffix}";
+              content = {
+                type = "luks";
+                name = "crypt-${name}${cfg.name-suffix}";
+                settings = {
+                  keyFile = "/keyfile";
+                };
+                # We don't wan't to set up these disks in stage 1
+                #
+                # Instead, they should be opened during the normal
+                # boot process.
+                initrdUnlock = false;
+                # FIXME: Note that this has not been yet tested as I am unwilling
+                # to reinstall my whole system to test this option
+                #
+                # It is also pretty unclean, as this should really be done
+                # by disko itself during the install process
+                preCreateHook = ''
+                  if [ ! -f /keyfile ]; then
+                    dd if=/dev/urandom of=/keyfile bs=1024 count=8
+                    chmod 0400 /keyfile
+                  fi
+                '';
+                postMountHook = ''
+                  if [ ! -f /mnt/keyfile ]; then
+                    cp /keyfile /mnt/keyfile
+                    chmod 0400 /mnt/keyfile
+                  fi
+                '';
+                content = {
+                  type = "btrfs";
+                  extraArgs = [
+                    "-L"
+                    "${name}${cfg.name-suffix}"
+                    "-f"
+                  ];
+                  subvolumes = {
+                    "/${name}" = {
+                      mountpoint = "/disk-${name}";
+                      # make accessible for user
+                      mountOptions = [
+                        "subvol=${name}"
+                        "compress=zstd"
+                        "noatime"
+                      ]
+                      ++ optional cfg.lazy-load "nofail";
                     };
                   };
                 };
               };
             };
           };
-        }
-        // lib.mapAttrs (
-          name: device: {
-            type = "disk";
-            device = device;
-            content = {
-              type = "gpt";
-              partitions = {
-                "${name}${cfg.name-suffix}" = {
-                  size = "100%";
-                  label = "luks-${name}${cfg.name-suffix}";
-                  content = {
-                    type = "luks";
-                    name = "crypt-${name}${cfg.name-suffix}";
-                    content = {
-                      type = "btrfs";
-                      extraArgs = ["-L" "${name}${cfg.name-suffix}" "-f"];
-                      subvolumes = {
-                        "/${name}" = {
-                          mountpoint = "/disk-${name}";
-                          # make accessible for user
-                          mountOptions = ["subvol=${name}" "compress=zstd" "noatime"];
-                        };
-                      };
-                    };
-                  };
-                };
-              };
-            };
-          }
-        )
-        cfg.storage-disks;
+        };
+      }) cfg.storage-disks;
     };
     fileSystems."/var/log".neededForBoot = true;
-    # needed so that the non-boot disks are also decrypted
-    boot.initrd.luks.reusePassphrases = true;
+
+    # use the keyfile
+    environment.etc.crypttab.text = lib.concatStringsSep "\n" (
+      lib.mapAttrsToList (
+        name: _:
+        let
+          options = [
+            "luks"
+          ]
+          # Don't wait for the disks if lazy-loading is enabled.
+          ++ optional cfg.lazy-load "nofail";
+          options_formatted = lib.concatStringsSep "," options;
+        in
+        "crypt-${name}${cfg.name-suffix} /dev/disk/by-partlabel/luks-${name}${cfg.name-suffix} /keyfile ${options_formatted}"
+      ) cfg.storage-disks
+    );
   };
 }
