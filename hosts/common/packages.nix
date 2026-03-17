@@ -10,7 +10,7 @@ let
     ];
 in
 {
-  programs.openvpn3.enable = true;
+  # programs.openvpn3.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
