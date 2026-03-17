@@ -36,9 +36,5 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    watt = {
-      url = "github:notashelf/watt";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 }

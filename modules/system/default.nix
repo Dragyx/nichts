@@ -11,6 +11,5 @@ _: {
     ./nix
     ./preserve-system.nix
     ./system.nix
-    ./watt.nix
   ];
 }
