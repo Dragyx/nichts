@@ -11,5 +11,6 @@ _: {
     ./nix
     ./preserve-system.nix
     ./system.nix
+    ./virtualization.nix
   ];
 }

@@ -57,6 +57,7 @@ in
       gitPath = "/home/${username}/repos/nichts";
       bluetooth.enable = true;
       amd.enable = true;
+      virtualization.enable = true;
       monitors = [
         {
           name = "LaptopMain";
