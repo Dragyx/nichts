@@ -1,8 +1,8 @@
 _: {
   imports = [
-    ./auto-partition.nix
     ./bluetooth.nix
     ./controllers.nix
+    ./disks.nix
     ./fonts.nix
     ./gpu
     ./home-manager.nix
