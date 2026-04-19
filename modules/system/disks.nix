@@ -9,8 +9,10 @@ let
   inherit (config.users.users.${username}) uid;
   inherit (lib)
     mkIf
+    mod
     types
     mkOption
+    findSingle
     mkEnableOption
     optional
     ;
@@ -106,10 +108,37 @@ in
             }
           '';
         };
-        limine = {
-          enable = cfg.boot-loader == "limine";
-          efiSupport = true;
-        };
+        limine =
+
+          let
+            monitor =
+              findSingle (monitor: monitor.displays-bootloader) null
+                (throw "Multiple monitors have displays-bootloader set to true.")
+                config.modules.system.monitors;
+          in
+          {
+            enable = cfg.boot-loader == "limine";
+            efiSupport = true;
+            style =
+
+              # figure out which display shows limine (by the manual marking on that monitor)
+              {
+                # disable the default NixOS background png
+                wallpapers = [ ];
+                interface = mkIf (monitor != null) {
+                  resolution =
+                    let
+                      inherit (monitor.resolution) x y;
+                      w = x |> toString;
+                      h = y |> toString;
+                    in
+                    if mod monitor.transform 2 == 0 then "${w}x${h}" else "${h}x${w}";
+                };
+              };
+            extraConfig = mkIf (monitor != null) ''
+              interface_rotation: ${mod (360 - monitor.transform * 90) 360 |> toString}
+            '';
+          };
       };
     };
 

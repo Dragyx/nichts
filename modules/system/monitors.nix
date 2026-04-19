@@ -1,12 +1,15 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) mkOption types;
-in {
+in
+{
   options.modules.system.monitors = mkOption {
     description = "
       List of monitors to use
     ";
-    default = [];
-    type = with types;
+    default = [ ];
+    type =
+      with types;
       listOf (submodule {
         options = {
           name = mkOption {
@@ -68,6 +71,12 @@ in {
             type = ints.between 0 3;
             description = "Rotation of the monitor counterclockwise";
             default = 0;
+          };
+          displays-bootloader = mkOption {
+            type = bool;
+            description = "Used to set settings like the correct rotation for the bootloader";
+            default = false;
+            example = true;
           };
         };
       });

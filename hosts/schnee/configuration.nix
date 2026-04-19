@@ -62,6 +62,7 @@
             y = 200;
           };
           transform = 1;
+          displays-bootloader = true;
         }
       ];
       # wayland = true;
