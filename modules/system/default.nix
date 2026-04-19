@@ -12,5 +12,6 @@ _: {
     ./preserve-system.nix
     ./system.nix
     ./virtualization.nix
+    ./wayland.nix
   ];
 }

@@ -64,7 +64,7 @@
           transform = 1;
         }
       ];
-      wayland = true;
+      # wayland = true;
       disks = {
         auto-partition.enable = true;
         swap-size = "64G";
@@ -84,31 +84,18 @@
       steam.enable = true;
       steam.gamescope = true;
       firefox.enable = true;
-      vesktop.enable = false;
       btop.enable = true;
       mpv.enable = true;
-      schizofox.enable = false;
       obs.enable = true;
-      vivado.enable = false;
-      rofi.enable = true;
       zathura.enable = true;
-      i3.enable = false;
       git = {
         enable = true;
         defaultBranch = "main";
       };
       starship.enable = true;
-      neovim-old.enable = true;
     };
     services = {
       pipewire.enable = true;
-    };
-    WM = {
-      waybar.enable = false;
-      hyprland = {
-        enable = false;
-        gnome-keyring.enable = false;
-      };
     };
     cosmic = {
       enable = true;

@@ -61,10 +61,6 @@ in
         CLUTTER_BACKEND = "wayland";
         GTK_USE_PORTAL = "1";
       })
-      (mkIf config.modules.WM.hyprland.enable {
-        XDG_CURRENT_DESKTOP = "Hyprland";
-        XDG_SESSION_DESKTOP = "Hyprland";
-      })
     ];
   };
 }

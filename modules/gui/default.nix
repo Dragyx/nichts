@@ -5,7 +5,6 @@ _: {
     ./dev
     ./gaming
     ./media
-    ./misc
     ./terminals
   ];
 }

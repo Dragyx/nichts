@@ -5,7 +5,6 @@ _: {
     ./fish.nix
     ./git.nix
     ./jujutsu.nix
-    ./neovim.nix
     ./nh.nix
     ./ranger.nix
     ./starship.nix

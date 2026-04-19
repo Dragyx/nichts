@@ -83,12 +83,10 @@ in
     programs = {
       minecraft.enable = false;
       minecraft.wayland = true;
-      vesktop.enable = false;
       btop.enable = true;
       mpv.enable = true;
       firefox.enable = true;
       obs.enable = true;
-      rofi.enable = true;
       zathura.enable = true;
       steam = {
         enable = true;
@@ -102,17 +100,6 @@ in
     };
     services.pipewire.enable = true;
 
-    WM = {
-      waybar.enable = false;
-      hyprland = {
-        enable = false;
-        gnome-keyring.enable = false;
-      };
-      quickshell = {
-        enable = true;
-        bar.enable = true;
-      };
-    };
     cosmic = {
       enable = true;
       greeter.enable = true;

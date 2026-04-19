@@ -4,18 +4,19 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.programs.zsh;
   username = config.modules.system.username;
-  hostname = config.modules.system.hostname;
   gitPath = config.modules.system.gitPath;
-in {
+in
+{
   options.modules.programs.zsh = {
     enable = mkEnableOption "zsh";
     extraAliases = mkOption {
       type = types.attrs;
       description = "extra shell aliases";
-      default = {};
+      default = { };
     };
     profiling = mkOption {
       type = types.bool;
@@ -32,7 +33,7 @@ in {
       plugins = mkOption {
         type = types.listOf (types.str);
         description = "oh-my-zsh plugins (like git)";
-        default = ["git"];
+        default = [ "git" ];
       };
     };
   };
@@ -41,12 +42,12 @@ in {
     programs.zsh.enable = true;
     #        users.users.${username}.shell = pkgs.zsh;
     environment = {
-      shells = [pkgs.zsh];
-      pathsToLink = ["/share/zsh"];
+      shells = [ pkgs.zsh ];
+      pathsToLink = [ "/share/zsh" ];
     };
     systemd.services.nitch-cached = {
       description = "Caches nitch output to /home/${username}/.cache/nitch.cached";
-      wantedBy = ["multi-user.target"];
+      wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "simple";
         User = "root";
@@ -55,7 +56,7 @@ in {
       };
     };
     systemd.timers."nitch-cached" = {
-      wantedBy = ["timers.target"];
+      wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "1s";
         OnUnitActiveSec = "1m";
@@ -63,33 +64,35 @@ in {
       };
     };
     home-manager.users.${username} = {
-      home.packages = with pkgs; [nix-output-monitor nitch];
+      home.packages = with pkgs; [
+        nix-output-monitor
+        nitch
+      ];
       programs.zoxide.enable = true;
       programs.zoxide.enableZshIntegration = true;
       programs.zsh = {
         enable = true;
-        shellAliases =
-          {
-            mv = "mv -i";
-            # rm = "trash -v";
-            ls = "eza";
-            l = "eza -a --icons";
-            la = "eza -lha --icons --git";
-            ll = "eza -l";
-            kys = "shutdown now";
-            cd = "z";
-            nv = "nvim";
-            rebuild = "nh os switch";
-            flake = "cd '${gitPath}'";
-          }
-          // cfg.extraAliases;
+        shellAliases = {
+          mv = "mv -i";
+          # rm = "trash -v";
+          ls = "eza";
+          l = "eza -a --icons";
+          la = "eza -lha --icons --git";
+          ll = "eza -l";
+          kys = "shutdown now";
+          cd = "z";
+          nv = "nvim";
+          rebuild = "nh os switch";
+          flake = "cd '${gitPath}'";
+        }
+        // cfg.extraAliases;
         initExtraFirst = mkIf cfg.profiling "zmodload zsh/zprof";
-        initExtra = lib.strings.concatStrings (["\nif [ -f /home/${username}/.cache/nitch.cached ]; then cat /home/${username}/.cache/nitch.cached; fi"]
-          ++ (
-            if cfg.profiling
-            then ["\nzprof"]
-            else [""]
-          ));
+        initExtra = lib.strings.concatStrings (
+          [
+            "\nif [ -f /home/${username}/.cache/nitch.cached ]; then cat /home/${username}/.cache/nitch.cached; fi"
+          ]
+          ++ (if cfg.profiling then [ "\nzprof" ] else [ "" ])
+        );
         history = {
           path = "${config.home-manager.users.${username}.xdg.dataHome}/zsh/zsh_history";
           size = 99999;
@@ -102,18 +105,18 @@ in {
         autocd = false;
         dotDir = ".config/zsh";
         /*
-          plugins = [
-          {
-              name = "fast-syntax-highlighting";
-              file = "fast-syntax-highlighting.plugin.zsh";
-              src = pkgs.fetchFromGitHub {
-                owner = "zdharma-continuum";
-                repo = "fast-syntax-highlighting";
-                rev = "cf318e06a9b7c9f2219d78f41b46fa6e06011fd9";
-                sha256 = "sha256-RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=";
-              };
-          }
-        ];
+            plugins = [
+            {
+                name = "fast-syntax-highlighting";
+                file = "fast-syntax-highlighting.plugin.zsh";
+                src = pkgs.fetchFromGitHub {
+                  owner = "zdharma-continuum";
+                  repo = "fast-syntax-highlighting";
+                  rev = "cf318e06a9b7c9f2219d78f41b46fa6e06011fd9";
+                  sha256 = "sha256-RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=";
+                };
+            }
+          ];
         */
         oh-my-zsh = mkIf cfg.ohmyzsh.enable {
           enable = true;

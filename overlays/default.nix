@@ -1,15 +1,5 @@
 { inputs, ... }:
 let
-  microfetch_custom = self: super: {
-    microfetch = super.microfetch.overrideAttrs (
-      final: prev: {
-        patches = [
-          # ./microfetch_shrink_logo.patch
-        ];
-      }
-    );
-  };
-
   add_nixpkgs_small = self: super: {
     small = import inputs.nixpkgs-small { system = super.system; };
   };
@@ -30,20 +20,10 @@ let
     };
   };
 
-  add_catppuccin_wallpapers = self: super: {
-    catppuccin-wallpapers = super.fetchFromGitHub {
-      owner = "zhichaoh";
-      repo = "catppuccin-wallpapers";
-      rev = "1023077979591cdeca76aae94e0359da1707a60e";
-      sha256 = "sha256-h+cFlTXvUVJPRMpk32jYVDDhHu1daWSezFcvhJqDpmU=";
-    };
-  };
 in
 {
   nixpkgs.overlays = [
     add_custom_scripts
-    add_catppuccin_wallpapers
     add_nixpkgs_small
-    microfetch_custom
   ];
 }
