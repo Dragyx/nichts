@@ -97,6 +97,10 @@
     services = {
       pipewire.enable = true;
     };
+    theming = {
+      enable = true;
+      scheme = "catppuccin-mocha";
+    };
     cosmic = {
       enable = true;
       greeter.enable = true;

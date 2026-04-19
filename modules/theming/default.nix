@@ -1,0 +1,58 @@
+args@{
+  lib,
+  inputs,
+  config,
+  ...
+}:
+let
+  inherit (lib)
+    filesystem
+    attrNames
+    mkEnableOption
+    mkOption
+    types
+    filterAttrs
+    ;
+  schemes = inputs.theming-schemes;
+  username = config.modules.system.username;
+  cfg = config.modules.theming;
+in
+{
+  options.modules.theming = {
+    enable = mkEnableOption "theming";
+    scheme = mkOption {
+      type = types.str;
+      default = "catppuccin-mocha";
+      description = "The theming scheme to use. Sets config.scheme internally by selecting the correct yaml from tinted-theming (base16.nix).";
+    };
+    base = mkOption {
+      type = types.enum [
+        16
+        24
+      ];
+      default = 16;
+      example = 24;
+      description = "Whether the theme is supplied in base16 color format or tinted-theming (base24) color format.";
+    };
+  };
+  # import all other files in the directory
+  imports =
+    filesystem.readDir ./.
+    |> filterAttrs (n: v: v == "regular" && n != "default.nix")
+    |> attrNames
+    |> map (f: ./. + "/${f}")
+    |> map (
+      mod:
+      import mod (
+        args
+        // {
+          inherit schemes username;
+          inherit (lib) mkIf;
+          enable = cfg.enable;
+          name = cfg.scheme;
+        }
+      )
+    );
+  # set the internal base16 theme
+  config.scheme = "${schemes.tt-schemes}/base${toString cfg.base}/${cfg.scheme}.yaml";
+}

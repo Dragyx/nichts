@@ -14,8 +14,9 @@ in
   imports = lib'.importWithLib lib' args [
     ./cli
     ./gui
-    ./tui
     ./services
     ./system
+    ./theming
+    ./tui
   ];
 }
