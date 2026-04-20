@@ -18,22 +18,6 @@
         "type": "github"
       }
     },
-    "base16-helix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1760703920,
-        "narHash": "sha256-m82fGUYns4uHd+ZTdoLX2vlHikzwzdu2s2rYM2bNwzw=",
-        "owner": "tinted-theming",
-        "repo": "base16-helix",
-        "rev": "d646af9b7d14bff08824538164af99d0c521b185",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "base16-helix",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -146,39 +130,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-small": "nixpkgs-small",
-        "theming-schemes": "theming-schemes"
-      }
-    },
-    "theming-schemes": {
-      "inputs": {
-        "base16-helix": "base16-helix",
-        "tinted-limine": "tinted-limine",
         "tt-schemes": "tt-schemes"
-      },
-      "locked": {
-        "path": "modules/theming/flake",
-        "type": "path"
-      },
-      "original": {
-        "path": "modules/theming/flake",
-        "type": "path"
-      },
-      "parent": []
-    },
-    "tinted-limine": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1776633635,
-        "narHash": "sha256-5+3Oy5Yhz/N7yMW9Kd70d+6E5LIqXKHeEvN6lzOpObc=",
-        "owner": "Dragyx",
-        "repo": "tinted-limine",
-        "rev": "8d94302cc8c4d256d421b6b4f41d0ed009e16d59",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Dragyx",
-        "repo": "tinted-limine",
-        "type": "github"
       }
     },
     "tt-schemes": {

@@ -107,5 +107,6 @@
       greeter.enable = true;
     };
   };
+  programs.foot.enable = true;
   system.stateVersion = "21.11"; # Did you read the comment?
 }

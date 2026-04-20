@@ -26,8 +26,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    theming-schemes.url = ./modules/theming/flake;
     base16.url = "github:SenchoPens/base16.nix";
+    tt-schemes = {
+      url = "github:tinted-theming/schemes";
+      flake = false;
+    };
 
   };
 }

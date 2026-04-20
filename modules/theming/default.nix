@@ -13,7 +13,6 @@ let
     types
     filterAttrs
     ;
-  schemes = inputs.theming-schemes;
   username = config.modules.system.username;
   cfg = config.modules.theming;
 in
@@ -46,13 +45,14 @@ in
       import mod (
         args
         // {
-          inherit schemes username;
+          inherit username;
           inherit (lib) mkIf;
           enable = cfg.enable;
           name = cfg.scheme;
+          colors = config.lib.base16.mkSchemeAttrs config.scheme;
         }
       )
     );
   # set the internal base16 theme
-  config.scheme = "${schemes.tt-schemes}/base${toString cfg.base}/${cfg.scheme}.yaml";
+  config.scheme = "${inputs.tt-schemes}/base${toString cfg.base}/${cfg.scheme}.yaml";
 }
