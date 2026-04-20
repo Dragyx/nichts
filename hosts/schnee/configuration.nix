@@ -87,6 +87,7 @@
       firefox.enable = true;
       btop.enable = true;
       mpv.enable = true;
+      zed.enable = true;
       obs.enable = true;
       zathura.enable = true;
       git = {

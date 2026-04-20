@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf mkForce;
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.modules.programs.zed;
   user = config.modules.system.username;
 in
@@ -21,10 +21,6 @@ in
         enable = true;
         userSettings = {
           agent = {
-            default_model = {
-              provider = "copilot_chat";
-              model = "claude-sonnet-4.5";
-            };
             favorite_models = [ ];
             model_parameters = [ ];
           };
@@ -37,11 +33,6 @@ in
           helix_mode = true;
           ui_font_size = 16;
           buffer_font_size = 15;
-          theme = {
-            mode = "system";
-            light = mkForce "One Light";
-            dark = mkForce "One Dark";
-          };
           lsp = {
             nil = {
               diagnostics = {
