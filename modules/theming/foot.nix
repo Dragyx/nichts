@@ -1,20 +1,15 @@
 {
-  colors,
+  scheme,
   enable,
   mkIf,
-  lib,
   username,
   ...
 }:
 let
+  polarity = if scheme.variant == "light" then "light" else "dark";
   settings =
-    # we don't really know wether a theme is light or dark
-    [
-      "light"
-      "dark"
-    ]
-    |> map (polarity: {
-      "colors-${polarity}" = with colors; {
+    {
+      "colors-${polarity}" = with scheme; {
         foreground = base05;
         background = base00;
         regular0 = base00;
@@ -40,8 +35,7 @@ let
         "20" = base04;
         "21" = base06;
       };
-    })
-    |> lib.mergeAttrsList
+    }
     |> mkIf enable;
 in
 {

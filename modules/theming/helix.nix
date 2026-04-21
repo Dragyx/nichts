@@ -1,5 +1,5 @@
 {
-  colors,
+  scheme,
   username,
   mkIf,
   name,
@@ -10,7 +10,7 @@
 
   home-manager.users.${username} = mkIf enable {
     # adapted from https://github.com/tinted-theming/base16-helix/blob/main/templates/default.mustache
-    xdg.configFile."helix/themes/${name}.toml".text = with colors.withHashtag; ''
+    xdg.configFile."helix/themes/${name}.toml".text = with scheme.withHashtag; ''
       "attribute" = "base09"
       "comment" = { fg = "base03", modifiers = ["italic"] }
       "constant" = "base09"

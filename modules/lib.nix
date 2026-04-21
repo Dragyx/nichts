@@ -2,15 +2,16 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) attrNames genAttrs;
   users = attrNames config.modules;
-in {
+in
+{
   eachUser = userAttrs: (genAttrs users userAttrs);
-  importWithLib = modLib: args: modules: (
-    builtins.map (
-      mod: import mod (args // {lib = modLib;})
-    )
-    modules
-  );
+  importWithLib =
+    modLib: args: modules:
+    (map (
+      mod: if builtins.isFunction mod then import mod (args // { lib = modLib; }) else import mod
+    ) modules);
 }

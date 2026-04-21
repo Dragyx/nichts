@@ -101,7 +101,8 @@
     };
     theming = {
       enable = true;
-      scheme = "catppuccin-mocha";
+      scheme = "catppuccin-macchiato";
+      base = 24;
     };
     cosmic = {
       enable = true;

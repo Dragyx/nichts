@@ -1,5 +1,5 @@
 {
-  colors,
+  scheme,
   enable,
   mkIf,
   ...
@@ -8,7 +8,7 @@
   console =
     {
       earlySetup = true;
-      colors = colors.toList;
+      colors = scheme.toList;
     }
     |> mkIf enable;
 }

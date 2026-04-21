@@ -1,6 +1,7 @@
-args@{
+{
   lib,
   inputs,
+  pkgs,
   config,
   ...
 }:
@@ -11,6 +12,7 @@ let
     mkEnableOption
     mkOption
     types
+    flip
     filterAttrs
     ;
   username = config.modules.system.username;
@@ -41,17 +43,18 @@ in
     |> attrNames
     |> map (f: ./. + "/${f}")
     |> map (
-      mod:
-      import mod (
-        args
-        // {
-          inherit username;
-          inherit (lib) mkIf;
-          enable = cfg.enable;
-          name = cfg.scheme;
-          colors = config.lib.base16.mkSchemeAttrs config.scheme;
-        }
-      )
+      flip import {
+        inherit
+          username
+          config
+          pkgs
+          lib
+          ;
+        inherit (lib) mkIf;
+        inherit (cfg) enable;
+        name = cfg.scheme;
+        scheme = config.lib.base16.mkSchemeAttrs config.scheme;
+      }
     );
   # set the internal base16 theme
   config.scheme = "${inputs.tt-schemes}/base${toString cfg.base}/${cfg.scheme}.yaml";
