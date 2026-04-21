@@ -36,6 +36,10 @@ in
       network.enable = true;
       fonts.enable = true;
     };
+    theming = {
+      scheme = lib.mkDefault "tokyo-night-dark";
+      base = 24;
+    };
     programs = {
       foot.enable = mkDefault true;
       foot.server = mkDefault true;

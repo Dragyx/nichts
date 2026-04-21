@@ -1,7 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   networking.hostId = "aefab460";
-  networking.interfaces.enp7s0.useDHCP = true;
   systemd.services.zfs-mount.enable = true;
   networking.networkmanager.enable = true;
   environment.systemPackages = with pkgs; [ networkmanager ]; # cli tool for managing connections
@@ -108,6 +107,10 @@
       greeter.enable = true;
     };
   };
-  programs.foot.enable = true;
+  specialisation = {
+    light.configuration.modules.theming.scheme = "tokyo-night-light";
+  };
+
   system.stateVersion = "21.11"; # Did you read the comment?
+
 }
