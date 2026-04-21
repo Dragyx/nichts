@@ -99,6 +99,7 @@
     };
     theming = {
       enable = true;
+      scheme = "tokyo-night-dark";
       base = 24;
     };
     cosmic = {
@@ -107,7 +108,7 @@
     };
   };
   specialisation = {
-    light.configuration.modules.theming.scheme = "tokyo-night-light";
+    light.configuration.modules.theming.scheme = lib.mkForce "tokyo-night-light";
   };
 
   system.stateVersion = "21.11"; # Did you read the comment?
