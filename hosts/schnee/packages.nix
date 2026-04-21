@@ -1,13 +1,15 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # nur-no-pkgs = import inputs.nur-no-pkgs { pkgs = inputs.nixpkgs.legacyPackages.${profile-config.system}; nurpkgs = inputs.nixpkgs.legacyPackages.${profile-config.system}; };
-  python-packages = ps:
-    with ps; [
+  python-packages =
+    ps: with ps; [
       pandas
       numpy
       opencv4
       ipython
     ];
-in {
+in
+{
   environment.systemPackages = with pkgs; [
     ani-cli
     ffmpeg
@@ -24,7 +26,7 @@ in {
     prismlauncher
     feh
     gamescope
-    xorg.xrandr # see configuration.nix: needed for xwayland applications to start on right monitor
+    xrandr # see configuration.nix: needed for xwayland applications to start on right monitor
     wine
     discord
     betterdiscordctl

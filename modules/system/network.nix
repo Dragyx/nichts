@@ -2,11 +2,18 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   username = config.modules.system.username;
   cfg = config.modules.system.network;
-  inherit (lib) mkIf mkEnableOption types mkOption;
-in {
+  inherit (lib)
+    mkIf
+    mkEnableOption
+    types
+    mkOption
+    ;
+in
+{
   options.modules.system.network = {
     enable = mkEnableOption "networking";
     hostname = mkOption {
@@ -24,11 +31,11 @@ in {
     };
     services.resolved = {
       enable = true;
-      fallbackDns = [
+      settings.Resolve.FallbackDNS = [
         "9.9.9.9"
         "2620::fe::fe"
       ];
     };
-    users.users.${username}.extraGroups = ["networkmanager"];
+    users.users.${username}.extraGroups = [ "networkmanager" ];
   };
 }

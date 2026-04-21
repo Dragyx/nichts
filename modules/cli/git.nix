@@ -1,12 +1,15 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.programs.git;
   username = config.modules.system.username;
-in {
+in
+{
   options.modules.programs.git = {
     enable = mkEnableOption "git";
     editor = mkOption {
@@ -30,14 +33,12 @@ in {
     home-manager.users.${username} = {
       programs.git = {
         inherit (cfg) enable;
-        extraConfig = {
-          /*
-             currently broken (rust compile error)
+        signing.format = null;
+        settings = {
           core = {
-              editor = cfg.editor;
-              pager = "${pkgs.delta}/bin/delta";
+            editor = cfg.editor;
+            pager = "${pkgs.delta}/bin/delta";
           };
-          */
           init.defaultBranch = cfg.defaultBranch;
           push.autoSetupRemote = true;
           commit = {
