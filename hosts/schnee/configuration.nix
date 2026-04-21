@@ -64,11 +64,10 @@
           displays-bootloader = true;
         }
       ];
-      # wayland = true;
+      boot-loader = "limine";
       disks = {
         auto-partition.enable = true;
         swap-size = "64G";
-        boot-loader = "limine";
         main-disk = "/dev/disk/by-id/nvme-Samsung_SSD_960_PRO_512GB_S3EWNX0K401532W";
         storage-disks = {
           "medium" = "/dev/disk/by-id/wwn-0x50026b7783226e2f";
