@@ -33,7 +33,7 @@ in
             colors = lib.mapAttrs (_: mkColor) {
               toolbar = base00;
               toolbar_text = base05;
-              frame = base01;
+              frame = base02;
               tab_background_text = base05;
               toolbar_field = base02;
               toolbar_field_text = base05;
@@ -41,14 +41,14 @@ in
               popup = base00;
               popup_text = base05;
               button_background_active = base04;
-              frame_inactive = base00;
+              frame_inactive = base01;
               icons_attention = base0D;
               icons = base05;
               ntp_background = base00;
               ntp_text = base05;
               popup_border = base0D;
               popup_highlight_text = base05;
-              popup_highlight = base04;
+              popup_highlight = base03;
               sidebar_border = base0D;
               sidebar_highlight_text = base05;
               sidebar_highlight = base0D;
