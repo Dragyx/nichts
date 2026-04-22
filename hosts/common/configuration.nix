@@ -37,7 +37,7 @@ in
       fonts.enable = true;
     };
     theming = {
-      scheme = lib.mkDefault "tokyo-night-dark";
+      scheme = lib.mkDefault "github-dark";
       base = 24;
     };
     programs = {

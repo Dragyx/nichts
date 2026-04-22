@@ -1,8 +1,6 @@
-{ config, ... }:
-let
+{config, ...}: let
   username = config.modules.system.username;
-in
-{
+in {
   imports = [
     ../common/default.nix
     ./packages.nix
@@ -10,7 +8,7 @@ in
 
   # framework specific for BIOS updates
   services.fwupd.enable = true;
-  users.users.${username}.extraGroups = [ "docker" ];
+  users.users.${username}.extraGroups = ["docker"];
 
   services.logrotate.checkConfig = false;
 
@@ -62,6 +60,10 @@ in
     other.home-manager = {
       enable = true;
       enableDirenv = true;
+    };
+    theming = {
+      enable = true;
+      base = 24;
     };
     programs = {
       minecraft.enable = false;
