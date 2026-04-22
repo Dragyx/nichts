@@ -14,7 +14,7 @@
     feh
     # Animeeeeee!
     ani-cli # The stable version is very outdated
-    superTuxKart
+    supertuxkart
     # nnn
     pympress
     ocaml
