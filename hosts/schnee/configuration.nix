@@ -107,9 +107,7 @@
       greeter.enable = true;
     };
   };
-  specialisation = {
-    light.configuration.modules.theming.scheme = lib.mkForce "tokyo-night-light";
-  };
+  specialisation.light.configuration.modules.theming.scheme = lib.mkForce "tokyo-night-light";
 
   system.stateVersion = "21.11"; # Did you read the comment?
 

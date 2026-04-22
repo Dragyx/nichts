@@ -90,6 +90,13 @@ in {
       greeter.enable = true;
     };
   };
+  specialisation = {
+    light.configuration.modules.theming.scheme = lib.mkForce "github";
+    pink.configuration.modules.theming = {
+      scheme = lib.mkForce "sakura";
+      base = lib.mkForce 16;
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
