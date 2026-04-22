@@ -22,24 +22,6 @@ in
     kernelParams = [ ];
     initrd.supportedFilesystems = [ "ext4" ];
     supportedFilesystems = [ "ext4" ];
-    loader = {
-      efi.efiSysMountPoint = "/boot";
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        enableCryptodisk = true;
-        extraEntries = ''
-          menuentry "Reboot" {
-            reboot
-          }
-          menuentry "Poweroff" {
-            halt
-          }
-        '';
-      };
-    };
     initrd.luks.devices = {
       cryptroot = {
         device = "/dev/disk/by-uuid/ec5ff3a1-9b39-4ba5-aa0f-19e898b4f6e8";
@@ -58,6 +40,7 @@ in
       bluetooth.enable = true;
       amd.enable = true;
       virtualization.enable = true;
+      boot-loader = "limine";
       monitors = [
         {
           name = "LaptopMain";

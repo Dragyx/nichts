@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./bootloader.nix
     ./bluetooth.nix
     ./controllers.nix
     ./disks.nix
